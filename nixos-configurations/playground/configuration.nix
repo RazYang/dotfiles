@@ -74,7 +74,7 @@
       "razyang.com" = {
         dnsProvider = "cloudflare";
         environmentFile = "/var/lib/secrets/razyang.com-cloudflare-api-token";
-        extraDomainNames = ["*.razyang.com"];
+        extraDomainNames = [ "*.razyang.com" ];
       };
     };
     acceptTerms = true;

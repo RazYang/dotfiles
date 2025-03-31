@@ -6,16 +6,18 @@ rec {
   test = callPackage ./test { };
   testStatic = callPackage ./test { static = true; };
   nixvim = callPackage ./nixvim.nix { };
-  t = pkgs.runCommand "t" {
-      __structuredAttrs = true;
-      exportReferencesGraph.closure = nixvim;
-      PATH = "${pkgs.coreutils}/bin";
-      builder = builtins.toFile "builder" ''
-        . .attrs.sh
-        cp .attrs.json ''${outputs[out]}
-      '';
+  rootfs = inputs.nixos-generators.nixosGenerate {
+    system = "x86_64-linux";
+    specialArgs = {
+      inherit pkgs;
+    };
+    modules = [
+      {
+      }
+    ];
+    format = "raw";
+  };
 
-  } ""; 
   inherit (pkgs) hello;
   inherit (pkgs) mongodb;
   default = hello;

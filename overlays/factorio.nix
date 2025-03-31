@@ -16,7 +16,7 @@
   libxkbcommon,
   makeDesktopItem,
   makeWrapper,
-  releaseType? "headless",
+  releaseType ? "headless",
   stdenv,
   wayland,
 
@@ -311,4 +311,4 @@ let
   };
 
 in
-stdenv.mkDerivation (releases.${releaseType})
+stdenv.mkDerivation releases.${releaseType}
