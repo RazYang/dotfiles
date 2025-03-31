@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
   # Bootloader.
   boot = {
     loader = {
@@ -21,9 +18,67 @@
     };
 
   };
-  services.dbus.implementation = "broker";
+  services = {
+    dbus.implementation = "broker";
+    nginx = {
+      enable = true;
+      group = "acme";
+      package = pkgs.nginxMainline;
+      clientMaxBodySize = "100m";
+      defaultHTTPListenPort = 8;
+      defaultSSLListenPort = 5;
+      virtualHosts = {
+        "ldap.razyang.com" = {
+          forceSSL = true;
+          useACMEHost = "razyang.com";
+          locations."/" = {
+            proxyPass = "http://localhost:17170";
+          };
+        };
+      };
+    };
+    factorio = {
+      enable = true;
+      game-name = "razyang's factorio game";
+      admins = [ "razyang" ];
+      allowedPlayers = [
+        "razyang"
+        "SEMOKA"
+        "Toto_xx"
+      ];
+    };
+    lldap = {
+      enable = true;
+      settings = {
+        ldap_base_dn = "dc=razyang,dc=com";
+        ldap_user_dn = "razyang";
+      };
+    };
+    bitmagnet.enable = false;
+
+    postgresql = {
+      enable = true;
+      enableJIT = true;
+      enableTCPIP = true;
+      package = pkgs.postgresql_17_jit;
+    };
+
+  };
 
   security.wrapperDirSize = "100%";
+  security.acme = {
+    defaults = {
+      email = "xzzorz@gmail.com";
+    };
+    certs = {
+      "razyang.com" = {
+        dnsProvider = "cloudflare";
+        environmentFile = "/var/lib/secrets/razyang.com-cloudflare-api-token";
+        extraDomainNames = ["*.razyang.com"];
+      };
+    };
+    acceptTerms = true;
+  };
 
   networking = {
     hostName = "playground";
@@ -32,14 +87,13 @@
 
   users.users.root.initialHashedPassword = "$y$j9T$.BxY4vIjQZapjGvpFvNJy1$u.Z.DuX4/z8hk81K8otcOILeECVx53IqRMlcKj/ek87";
 
-  environment.memoryAllocator.provider = "mimalloc";
+  #environment.memoryAllocator.provider = "mimalloc";
   environment.persistence."/nix/persistent" = {
     hideMounts = true;
     directories = [
       "/root"
       "/var/log"
-      "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
+      "/var/lib/"
       {
         directory = "/var/lib/colord";
         user = "colord";

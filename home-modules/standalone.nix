@@ -17,7 +17,7 @@
     settings = {
       extra-experimental-features = "nix-command flakes";
       extra-substituters = [
-        "https://mirrors.cernet.edu.cn/nix-channels/store"
+        #"https://mirrors.cernet.edu.cn/nix-channels/store"
         "https://nix-community.cachix.org"
       ];
       extra-trusted-public-keys = [

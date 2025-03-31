@@ -68,7 +68,7 @@
       overlays = import ./overlays { inherit inputs; };
       packages = eachSystem (pkgs: (import ./packages { inherit inputs pkgs; }));
       nixosModules = import ./nixos-modules;
-      nixosConfigurations = import ./nixos-configurations { inherit inputs; };
+      nixosConfigurations = import ./nixos-configurations { inherit inputs pkgsWithSystem; };
 
       homeModules = import ./home-modules;
       homeConfigurations = import ./home-configurations {

@@ -16,13 +16,33 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
   ##############################
   keymaps = [
     {
-      key = "vt";
-      action = ''<cmd>lua require("flash").treesitter()<cr>'';
-      options.desc = "Flash Treesitter selection";
+      key = "mm";
+      action = ''<cmd>lua require("multicursor-nvim").matchAllAddCursors()<cr>'';
+      options.desc = "MultiCursor add all";
     }
     {
-      key = "m";
-      action = ''<cmd>MCstart<cr>'';
+      key = "mq";
+      action = ''<cmd>lua require("multicursor-nvim").clearCursors()<cr>'';
+      options.desc = "MultiCursor quit";
+    }
+    {
+      key = "mp";
+      action = ''<cmd>lua require("multicursor-nvim").matchAddCursor(-1)<cr>'';
+      options.desc = "MultiCursor add previous";
+    }
+    {
+      key = "mn";
+      action = ''<cmd>lua require("multicursor-nvim").matchAddCursor(1)<cr>'';
+      options.desc = "MultiCursor add next";
+    }
+    {
+      key = "mr";
+      action = ''<cmd>lua require("multicursor-nvim").matchCursors()<cr>'';
+      options.desc = "MultiCursor with regex";
+    }
+    {
+      key = "vt";
+      action = ''<cmd>lua require("flash").treesitter()<cr>'';
       options.desc = "Flash Treesitter selection";
     }
     {
@@ -147,6 +167,8 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         };
         clangd.enable = true;
         gopls.enable = true;
+        hls.enable = true;
+        hls.installGhc = true;
         cmake.enable = true;
         yamlls.enable = true;
         jsonls.enable = true;
@@ -270,80 +292,6 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         };
       };
     };
-    multicursors = {
-      enable = true;
-      normalKeys = {
-        "<C-a>".method = false;
-        "<C-n>".method = false;
-        K.method = false;
-        Q.method = false;
-        J.method = false;
-        q.method = false;
-        "[".method = false;
-        "]".method = false;
-        "{".method = false;
-        "}".method = false;
-        "Z".method = false;
-        m = {
-          method = "require('multicursors.normal_mode').find_all_matches";
-          opts = {
-            desc = "Find all";
-          };
-        };
-      };
-      insertKeys = {
-        "<C-BS>".method = false;
-        "<C-Right>".method = false;
-        "<C-Left>".method = false;
-        "<Up>".method = false;
-        "<Down>".method = false;
-        "<A-f>" = {
-          method = "require('multicursors.insert_mode').C_Right";
-          opts = {
-            desc = "Word forward";
-          };
-        };
-        "<A-b>" = {
-          method = "require('multicursors.insert_mode').C_Left";
-          opts = {
-            desc = "Word back";
-          };
-        };
-        "<C-f>" = {
-          method = "require('multicursors.insert_mode').Right_method";
-          opts = {
-            desc = "Char forward";
-          };
-        };
-        "<C-b>" = {
-          method = "require('multicursors.insert_mode').Left_method";
-          opts = {
-            desc = "Char forward";
-          };
-        };
-        "<C-a>" = {
-          method = "require('multicursors.insert_mode').Home_method";
-          opts = {
-            desc = "Head of line";
-          };
-        };
-        "<C-e>" = {
-          method = "require('multicursors.insert_mode').End_method";
-          opts = {
-            desc = "End of line";
-          };
-        };
-      };
-      extendKeys = {
-        "^".method = false;
-        "0" = {
-          method = "require('multicursors.extend_mode').caret_method";
-          opts = {
-            desc = "Start of line";
-          };
-        };
-      };
-    };
 
     flash = {
       enable = true;
@@ -382,6 +330,15 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
   ### extra plugins
   ##############################
   extraPlugins = [
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "multicursor";
+      src = pkgs.fetchFromGitHub {
+        owner = "jake-stewart";
+        repo = "multicursor.nvim";
+        rev = "1.0";
+        hash = "sha256-0bFqoTq4d49/REDu6Rnmvms3kDIyEl0N57CpxYp0ImU=";
+      };
+    })
     (pkgs.vimUtils.buildVimPlugin {
       name = "hlchunk";
       src = pkgs.fetchFromGitHub {
@@ -444,6 +401,7 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
 
     require('nvim-highlight-colors').setup({})
     require('guess-indent').setup({})
+    require("multicursor-nvim").setup({})
 
     vim.g.gruvbox_baby_telescope_theme = 1
     vim.g.gruvbox_baby_background_color = "dark"

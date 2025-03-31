@@ -34,7 +34,7 @@
       keyMode = "vi";
       prefix = "C-q";
       terminal = "screen-256color";
-      shell = "${pkgs.nushell}/bin/nu";
+      #shell = "${pkgs.nushell}/bin/nu";
       plugins = with pkgs.tmuxPlugins; [
         gruvbox
         extrakto
