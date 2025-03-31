@@ -4,6 +4,10 @@
     inherit inputs;
     pkgs = pkgsWithSystem "x86_64-linux";
   };
+  "razyang@0xdeadbeef" = import ./razyang {
+    inherit inputs;
+    pkgs = pkgsWithSystem "x86_64-linux";
+  };
   "yang@macbook.lan" = import ./yang {
     inherit inputs;
     pkgs = pkgsWithSystem "aarch64-darwin";

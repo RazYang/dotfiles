@@ -1,6 +1,32 @@
 { pkgs, ... }:
 {
-  programs.atuin.enable = true;
+  programs.atuin = {
+    enable = true;
+    settings = {
+      history_filter = [
+        "^cd"
+        "^ls"
+        "^svn"
+        "^z "
+        "^stat "
+        "^rm "
+        "^pwd"
+        "^mv "
+        "^touch "
+        "^ps "
+        "^vim "
+        "^du "
+        "^gdu "
+        "^man "
+        "^ncdu "
+        "^file "
+        "^tree "
+        "^cloc "
+      ];
+      daemon.enabled = true;
+    };
+
+  };
   programs.starship = {
     enable = true;
     enableTransience = true;
@@ -48,7 +74,7 @@
         };
       }
     ];
-    completionInit = "";
+    #completionInit = "";
     initExtraFirst = '''';
     initExtra = ''
       [[ ! -f ~/.cargo/env ]] || source ~/.cargo/env
@@ -58,7 +84,7 @@
       CASE_SENSITIVE="true"
       export PATH=~/.local/bin:$PATH
       bindkey "^J" accept-line
-      export MANPAGER="less -M -R -i --use-color -Dd+R -Du+B -DHkC -j5"
+      export MANPAGER="${pkgs.less}/bin/less -M -R -i --use-color -Dd+R -Du+B -DHkC -j5"
       export MANROFFOPT="-c"
     '';
   };
