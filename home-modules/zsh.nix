@@ -85,23 +85,28 @@
       }
     ];
     #completionInit = "";
-    initContent = (pkgs.lib.mkBefore ''
-      typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
-    '') + ''
-      [[ ! -f ~/.cargo/env ]] || source ~/.cargo/env
-      [[ ! -f ~/.zsh_extra ]] || source ~/.zsh_extra
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-      CASE_SENSITIVE="true"
-      export PATH=~/.local/bin:$PATH
-      bindkey "^J" accept-line
-      export MANPAGER="${pkgs.less}/bin/less -M -R -i --use-color -Dd+R -Du+B -DHkC -j5"
-      export MANROFFOPT="-c"
-      export EDITOR="vim"
-    '';
+    initContent =
+      with pkgs;
+      lib.mkMerge [
+        (lib.mkBefore ''
+          typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+           if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+             source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+           fi
+        '')
+        (lib.mkAfter ''
+          [[ ! -f ~/.cargo/env ]] || source ~/.cargo/env
+          [[ ! -f ~/.zsh_extra ]] || source ~/.zsh_extra
+          [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+          zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+          zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+          CASE_SENSITIVE="true"
+          export PATH=~/.local/bin:$PATH
+          bindkey "^J" accept-line
+          export MANPAGER="${pkgs.less}/bin/less -M -R -i --use-color -Dd+R -Du+B -DHkC -j5"
+          export MANROFFOPT="-c"
+          export EDITOR="vim"
+        '')
+      ];
   };
 }

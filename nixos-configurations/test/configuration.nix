@@ -1,5 +1,4 @@
-_:
-{
+_: {
   boot.isContainer = true;
   #imports = [
   #  (modulesPath + "/virtualisation/proxmox-lxc.nix")

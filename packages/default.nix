@@ -12,10 +12,10 @@ rec {
   testos = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
-      {boot.isContainer = true; }
+      { boot.isContainer = true; }
     ];
   };
-  zig = pkgs.zigPackages.zig;
+  inherit (pkgs.zigPackages) zig;
   rootfs = inputs.nixos-generators.nixosGenerate {
     system = "x86_64-linux";
     specialArgs = {
@@ -30,6 +30,6 @@ rec {
     format = "lxc";
 
   };
-  home-manager = inputs.home-manager.packages.x86_64-linux.home-manager;
+  hm = inputs.home-manager.packages.x86_64-linux.home-manager;
   default = hello;
 }

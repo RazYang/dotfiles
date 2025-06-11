@@ -327,15 +327,6 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
   ##############################
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
-      name = "multicursor";
-      src = pkgs.fetchFromGitHub {
-        owner = "jake-stewart";
-        repo = "multicursor.nvim";
-        rev = "1.0";
-        hash = "sha256-0bFqoTq4d49/REDu6Rnmvms3kDIyEl0N57CpxYp0ImU=";
-      };
-    })
-    (pkgs.vimUtils.buildVimPlugin {
       name = "hlchunk";
       src = pkgs.fetchFromGitHub {
         owner = "shellRaining";
@@ -344,15 +335,15 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         hash = "sha256-UGxrfFuLJETL/KJNY9k4zehxb6RrXC6UZxnG+7c9JXw=";
       };
     })
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "nvim-snippets";
-      src = pkgs.fetchFromGitHub {
-        owner = "garymjr";
-        repo = "nvim-snippets";
-        rev = "v1.0.0";
-        hash = "sha256-1/XgOCTFxFp72WkAMe3MkGcWjSw/xJ7OJvqiN/qT5RE=";
-      };
-    })
+    # (pkgs.vimUtils.buildVimPlugin {
+    #   name = "nvim-snippets";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "garymjr";
+    #     repo = "nvim-snippets";
+    #     rev = "v1.0.0";
+    #     hash = "sha256-1/XgOCTFxFp72WkAMe3MkGcWjSw/xJ7OJvqiN/qT5RE=";
+    #   };
+    # })
     (pkgs.vimUtils.buildVimPlugin {
       name = "grug-far";
       src = pkgs.fetchFromGitHub {
@@ -368,7 +359,7 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         owner = "jake-stewart";
         repo = "multicursor.nvim";
         rev = "1.0";
-        hash = "";
+        hash = "sha256-bCk/b1LKORvgcpQwAGv9foa9fl4TwHN64UEdzlncAi4=";
       };
     })
     pkgs.vimPlugins.tabout-nvim
@@ -404,8 +395,6 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         style = "#f88800",
       },
     })
-
-    require('snippets').setup()
 
     require('tabout').setup({
       tabkey = '<Tab>',

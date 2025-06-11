@@ -1,5 +1,4 @@
-_:
-{
+_: {
   containers = {
     postgresql = import ./postgresql.nix { };
   };
