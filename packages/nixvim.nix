@@ -21,8 +21,17 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
       options.desc = "MultiCursor Match All";
     }
     {
-      key = "m<esc>";
-      action = ''<cmd>lua require("multicursor-nvim").clearCursors()<cr>'';
+      key = "<esc>";
+      action.__raw = ''
+        function()
+            mc = require('multicursor-nvim')
+            if not mc.cursorsEnabled() then
+              mc.enableCursors()
+            else
+              mc.clearCursors()
+            end
+        end
+      '';
       options.desc = "MultiCursor Clear All Cursors";
     }
     {
