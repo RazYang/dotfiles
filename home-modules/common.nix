@@ -34,7 +34,6 @@
       keyMode = "vi";
       prefix = "C-q";
       terminal = "screen-256color";
-      shell = "${pkgs.nushell}/bin/nu";
       plugins = with pkgs.tmuxPlugins; [
         gruvbox
         extrakto
@@ -44,6 +43,7 @@
         unbind %
         bind h split-window -h
         bind v split-window -v
+        bind-key t display-popup -w "60%" -h "80%"  -E "taskwarrior-tui"
         bind -n M-a select-pane -L
         bind -n M-d select-pane -R
         bind -n M-w select-pane -U

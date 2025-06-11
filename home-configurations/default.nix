@@ -4,7 +4,7 @@
     inherit inputs;
     pkgs = pkgsWithSystem "x86_64-linux";
   };
-  "razyang@0xdeadbeef" = import ./razyang {
+  "razyang" = import ./razyang {
     inherit inputs;
     pkgs = pkgsWithSystem "x86_64-linux";
   };

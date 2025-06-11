@@ -162,6 +162,7 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         denols.enable = true;
         marksman.enable = true;
         ansiblels.enable = true;
+        scheme_langserver.enable = true;
       };
       keymaps = {
         diagnostic = {
@@ -360,8 +361,8 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
       src = pkgs.fetchFromGitHub {
         owner = "jake-stewart";
         repo = "multicursor.nvim";
-        rev = "master";
-        hash = "sha256-rX346rQRJE6SauY/AxhUM4GgAbCt/gep8WPlRm47U4U=";
+        rev = "1.0";
+        hash = "";
       };
     })
     pkgs.vimPlugins.tabout-nvim

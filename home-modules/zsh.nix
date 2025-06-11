@@ -23,14 +23,14 @@
         "^tree "
         "^cloc "
       ];
-      daemon.enabled = true;
+      #daemon.enabled = true;
     };
 
   };
-  programs.starship = {
-    enable = true;
-    enableTransience = true;
-  };
+  #programs.starship = {
+  #  enable = true;
+  #  enableTransience = true;
+  #};
   programs.nushell = {
     enable = true;
     extraConfig = ''
@@ -55,6 +55,16 @@
     defaultKeymap = "emacs";
     plugins = [
       {
+        name = "powerlevel10k";
+        file = "powerlevel10k.zsh-theme";
+        src = pkgs.fetchFromGitHub {
+          owner = "romkatv";
+          repo = "powerlevel10k";
+          rev = "v1.20.0";
+          sha256 = "sha256-ES5vJXHjAKw/VHjWs8Au/3R+/aotSbY7PWnWAMzCR8E=";
+        };
+      }
+      {
         name = "fzf-tab";
         file = "fzf-tab.plugin.zsh";
         src = pkgs.fetchFromGitHub {
@@ -75,10 +85,16 @@
       }
     ];
     #completionInit = "";
-    initExtraFirst = '''';
+    initExtraFirst = ''
+      typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+    '';
     initExtra = ''
       [[ ! -f ~/.cargo/env ]] || source ~/.cargo/env
       [[ ! -f ~/.zsh_extra ]] || source ~/.zsh_extra
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       CASE_SENSITIVE="true"
@@ -86,6 +102,7 @@
       bindkey "^J" accept-line
       export MANPAGER="${pkgs.less}/bin/less -M -R -i --use-color -Dd+R -Du+B -DHkC -j5"
       export MANROFFOPT="-c"
+      export EDITOR="vim"
     '';
   };
 }
