@@ -409,7 +409,6 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
     require('grug-far').setup({
       windowCreationCommand = 'tabnew',
     })
-    require("multicursor-nvim").setup({})
     local hl = vim.api.nvim_set_hl
     hl(0, "MultiCursorCursor", { link = "Cursor" })
     hl(0, "MultiCursorVisual", { link = "Visual" })
