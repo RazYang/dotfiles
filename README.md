@@ -5,10 +5,10 @@ Razyang's dotfiles managed by nix and home-manager.
 # Show what's supported
 
 ```bash
-nix flake show "github:zzorz/dotfiles"
+nix flake show "github:razyang/dotfiles"
 ```
 
-or using `nix repl`, `:lf "github:zzorz/dotfiles"` function. or using git to
+or using `nix repl`, `:lf "github:razyang/dotfiles"` function. or using git to
 download this flake
 `nix flake show "git+https://github.com/Zzorz/dotfiles?submodules=1&shallow=1"`
 
@@ -31,7 +31,7 @@ echo 'extra-experimental-features = nix-command flakes' >> /etc/nix/nix.conf
 ### using home-manager, switch to my config
 
 ```bash
-nix run 'github:nix-community/home-manager' -- switch --flake 'github:zzorz/dotfiles'
+nix run 'github:nix-community/home-manager' -- switch --flake 'github:razyang/dotfiles'
 ```
 
 OR
@@ -45,7 +45,7 @@ suppurted usernames are `razyang`,`test` and `root`.
 ## for nixos
 
 ```bash
-nixos-rebuild switch --flake "github:zzorz/dotfiles"
+nixos-rebuild switch --flake "github:razyang/dotfiles"
 ```
 
 OR
@@ -59,13 +59,13 @@ suppurted hostnames are `playground`, `adguardhome` and `fileserver`
 ### Just neovim alone
 
 ```bash
-nix profile install 'github:zzorz/dotfiles#nixvim'
+nix profile install 'github:razyang/dotfiles#nixvim'
 ```
 
 Without install
 
 ```bash
-nix run 'github:zzorz/dotfiles#nixvim'
+nix run 'github:razyang/dotfiles#nixvim'
 ```
 
 # pack any executable in nixpkgs and run it anywhre

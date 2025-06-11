@@ -1,6 +1,7 @@
 _: {
   modifications = _final: prev: {
     # example
+    factorio = prev.callPackage ./factorio.nix { };
     hello = prev.hello.overrideAttrs (_oldAttrs: rec {
       version = "2.12";
       src = prev.fetchurl {

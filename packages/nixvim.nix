@@ -16,11 +16,6 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
   ##############################
   keymaps = [
     {
-      key = "vt";
-      action = ''<cmd>lua require("flash").treesitter()<cr>'';
-      options.desc = "Flash Treesitter selection";
-    }
-    {
       key = "mm";
       action = ''<cmd>lua require("multicursor-nvim").matchAllAddCursors()<cr>'';
       options.desc = "MultiCursor Match All";
@@ -156,6 +151,8 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         };
         clangd.enable = true;
         gopls.enable = true;
+        hls.enable = true;
+        hls.installGhc = true;
         cmake.enable = true;
         yamlls.enable = true;
         jsonls.enable = true;
@@ -330,6 +327,15 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
   ##############################
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
+      name = "multicursor";
+      src = pkgs.fetchFromGitHub {
+        owner = "jake-stewart";
+        repo = "multicursor.nvim";
+        rev = "1.0";
+        hash = "sha256-0bFqoTq4d49/REDu6Rnmvms3kDIyEl0N57CpxYp0ImU=";
+      };
+    })
+    (pkgs.vimUtils.buildVimPlugin {
       name = "hlchunk";
       src = pkgs.fetchFromGitHub {
         owner = "shellRaining";
@@ -409,6 +415,7 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
 
     require('nvim-highlight-colors').setup({})
     require('guess-indent').setup({})
+    require("multicursor-nvim").setup({})
     vim.g.maplocalleader = 'r'
     require('grug-far').setup({
       windowCreationCommand = 'tabnew',
@@ -422,7 +429,6 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
     hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
     hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
     hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
-
 
     vim.g.gruvbox_baby_telescope_theme = 1
     vim.g.gruvbox_baby_background_color = "dark"

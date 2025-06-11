@@ -29,6 +29,10 @@
       url = "https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -68,7 +72,7 @@
       overlays = import ./overlays { inherit inputs; };
       packages = eachSystem (pkgs: (import ./packages { inherit inputs pkgs; }));
       nixosModules = import ./nixos-modules;
-      nixosConfigurations = import ./nixos-configurations { inherit inputs; };
+      nixosConfigurations = import ./nixos-configurations { inherit inputs pkgsWithSystem; };
 
       homeModules = import ./home-modules;
       homeConfigurations = import ./home-configurations {
