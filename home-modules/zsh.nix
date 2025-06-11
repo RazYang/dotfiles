@@ -85,13 +85,12 @@
       }
     ];
     #completionInit = "";
-    initExtraFirst = ''
+    initContent = (pkgs.lib.mkBefore ''
       typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
         fi
-    '';
-    initExtra = ''
+    '') + ''
       [[ ! -f ~/.cargo/env ]] || source ~/.cargo/env
       [[ ! -f ~/.zsh_extra ]] || source ~/.zsh_extra
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

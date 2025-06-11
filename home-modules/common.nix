@@ -77,7 +77,7 @@
 
     lsd = {
       enable = true;
-      enableAliases = true;
+      enableZshIntegration = true;
     };
   };
 }
