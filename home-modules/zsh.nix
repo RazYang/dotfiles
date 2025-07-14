@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.atuin = {
     enable = true;
     settings = {

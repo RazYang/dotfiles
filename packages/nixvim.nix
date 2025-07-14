@@ -40,6 +40,11 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
       options.desc = "Telescope Find File";
     }
     {
+      key = "<space>d";
+      action = ''<cmd>Telescope diagnostics<cr>'';
+      options.desc = "Telescope diagnostics";
+    }
+    {
       key = "<space>fg";
       action = ''<cmd>Telescope live_grep<cr>'';
       options.desc = "Telescope File Grap";
@@ -151,8 +156,21 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
       servers = {
         bashls.enable = true;
         nil_ls.enable = true;
-        basedpyright.enable = true;
         ruff.enable = true;
+        basedpyright = {
+          enable = true;
+          settings = {
+            python.pythonPath = "./.venv/bin/python3";
+            basedpyright = {
+              reportMissingImports = "error";
+              typeCheckingMode = "off";
+              analysis = {
+                diagnosticMode = "workspace";
+                autoImportCompletions = true;
+              };
+            };
+          };
+        };
         rust_analyzer = {
           enable = true;
           installCargo = true;
@@ -160,20 +178,16 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
         };
         clangd.enable = true;
         gopls.enable = true;
-        hls.enable = true;
-        hls.installGhc = true;
         cmake.enable = true;
         yamlls.enable = true;
         jsonls.enable = true;
-        denols.enable = true;
         marksman.enable = true;
-        ansiblels.enable = true;
-        scheme_langserver.enable = true;
       };
       keymaps = {
         diagnostic = {
           "[p" = "goto_next";
           "[n" = "goto_prev";
+          "[a" = "open_float";
         };
         lspBuf = {
           K = "hover";
@@ -330,6 +344,14 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
     # [ https://github.com/rafamadriz/friendly-snippets ]
     # Set of preconfigured snippets for different languages.
     friendly-snippets.enable = true;
+
+    grug-far = {
+      enable = true;
+      settings = {
+        engine = "astgrep";
+        windowCreationCommand = "tabnew";
+      };
+    };
   };
   ##############################
   ### extra plugins
@@ -353,15 +375,6 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
     #     hash = "sha256-1/XgOCTFxFp72WkAMe3MkGcWjSw/xJ7OJvqiN/qT5RE=";
     #   };
     # })
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "grug-far";
-      src = pkgs.fetchFromGitHub {
-        owner = "MagicDuck";
-        repo = "grug-far.nvim";
-        rev = "11d0fbd6fff6f4e394af95319deeaab4ef88ce97";
-        hash = "sha256-DkVRoxrD/9nlNORGq46CAQvIWjyga+TRvZ74uFKIq8I=";
-      };
-    })
     (pkgs.vimUtils.buildVimPlugin {
       name = "multicursor.nvim";
       src = pkgs.fetchFromGitHub {
@@ -415,9 +428,7 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
     require('guess-indent').setup({})
     require("multicursor-nvim").setup({})
     vim.g.maplocalleader = 'r'
-    require('grug-far').setup({
-      windowCreationCommand = 'tabnew',
-    })
+
     local hl = vim.api.nvim_set_hl
     hl(0, "MultiCursorCursor", { link = "Cursor" })
     hl(0, "MultiCursorVisual", { link = "Visual" })
