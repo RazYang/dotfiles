@@ -1,4 +1,4 @@
-{ inputs, pkgs }:
+{ pkgs }:
 {
   inherit (pkgs) hello;
   #nixvim = callPackage ./nixvim.nix { };
