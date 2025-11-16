@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     jq
@@ -9,5 +9,8 @@
     file
     binutils
     nix-tree
+    codex
+    zcf
+    nixfmt-rfc-style
   ];
 }

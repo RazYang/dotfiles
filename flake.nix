@@ -27,7 +27,6 @@
     infuse.url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
     infuse.flake = false;
 
-
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     flake-programs-sqlite.inputs.nixpkgs.follows = "nixpkgs";
     flake-programs-sqlite.inputs.utils.follows = "flake-utils";

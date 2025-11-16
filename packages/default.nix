@@ -3,9 +3,11 @@ let
   callPackage = file: args: pkgs.callPackage file ({ inherit inputs; } // args);
 in
 {
-  inherit (pkgs) 
+  inherit (pkgs)
     hello
-    codex;
+    codex
+    zcf
+    ;
   nixvim = callPackage ./nixvim.nix { };
   hm = inputs.home-manager.packages.x86_64-linux.home-manager;
 }
