@@ -3,6 +3,7 @@ let
   callPackage = file: args: pkgs.callPackage file ({ inherit inputs; } // args);
 in
 {
+  hello-custom = callPackage ./hello-custom.nix { };
   inherit (pkgs)
     hello
     codex
