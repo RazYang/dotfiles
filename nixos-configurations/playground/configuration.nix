@@ -19,6 +19,10 @@
 
   };
   services = {
+    dae = {
+      enable = true;
+      configFile = "/var/lib/config.dae";
+    };
     samba = {
       enable = true;
       settings = {
@@ -28,7 +32,7 @@
         };
       };
     };
-    v2raya.enable = true;
+    #v2raya.enable = true;
     dbus.implementation = "broker";
     nginx = {
       enable = true;
