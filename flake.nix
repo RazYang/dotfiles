@@ -23,8 +23,10 @@
     impermanence.url = "github:nix-community/impermanence";
     treefmt-nix.url = "https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip";
     nixos-generators.url = "github:nix-community/nixos-generators";
+    codex.url = "github:openai/codex/rust-v0.58.0";
     infuse.url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
     infuse.flake = false;
+
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     flake-programs-sqlite.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +35,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+    #codex.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

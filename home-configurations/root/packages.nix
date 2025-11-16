@@ -1,11 +1,13 @@
 { inputs, pkgs, ... }:
 {
   home.packages = with pkgs; [
+    jq
+    vim
     gdu
     git
     htop
     file
     binutils
-    inputs.self.packages.${pkgs.system}.nixvim
+    nix-tree
   ];
 }
