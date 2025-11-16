@@ -12,7 +12,7 @@
       trusted-substituters = substituters ++ [ "https://cache.nixos.org/" ];
     };
     extraOptions = ''
-      extra-experimental-features = nix-command flakes
+      extra-experimental-features = nix-command flakes pipe-operators
     '';
   };
   programs.zsh.enable = true;
