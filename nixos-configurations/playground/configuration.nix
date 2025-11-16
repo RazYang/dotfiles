@@ -19,6 +19,16 @@
 
   };
   services = {
+    samba = {
+      enable = true;
+      settings = {
+        global = {
+          "passwd program" = "/run/wrappers/bin/passwd %u";
+          security = "user";
+        };
+      };
+    };
+    v2raya.enable = true;
     dbus.implementation = "broker";
     nginx = {
       enable = true;
@@ -38,7 +48,7 @@
       };
     };
     factorio = {
-      enable = true;
+      enable = false;
       game-name = "razyang's factorio game";
       admins = [ "razyang" ];
       allowedPlayers = [
@@ -60,9 +70,8 @@
       enable = true;
       enableJIT = true;
       enableTCPIP = true;
-      package = pkgs.postgresql_17_jit;
+      #package = pkgs.postgresql_17_jit;
     };
-
   };
 
   security.wrapperDirSize = "100%";
