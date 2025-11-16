@@ -380,8 +380,8 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
       src = pkgs.fetchFromGitHub {
         owner = "jake-stewart";
         repo = "multicursor.nvim";
-        rev = "1.0";
-        hash = "sha256-bCk/b1LKORvgcpQwAGv9foa9fl4TwHN64UEdzlncAi4=";
+        rev = "25d1e50";
+        hash = "sha256-aWYpH8KO/QERg+97sya7mnuL5ckoVaYo2J/XPKMeQYI=";
       };
     })
     pkgs.vimPlugins.tabout-nvim
