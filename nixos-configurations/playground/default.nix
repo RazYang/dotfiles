@@ -7,7 +7,6 @@ inputs.nixpkgs.lib.nixosSystem rec {
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
     ./configuration.nix
-    #./containers
     ./hardware-configuration.nix
   ];
 }

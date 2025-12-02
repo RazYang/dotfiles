@@ -8,7 +8,7 @@
     inherit inputs;
     pkgs = pkgsWithSystem "x86_64-linux";
   };
-  "yang@macbook.lan" = import ./yang {
+  "yang" = import ./yang {
     inherit inputs;
     pkgs = pkgsWithSystem "aarch64-darwin";
   };

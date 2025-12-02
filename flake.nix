@@ -9,21 +9,20 @@
     experimental-features = [
       "flakes"
       "nix-command"
-      "pipe-operators"
     ];
   };
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    flake-programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nixvim.url = "github:nix-community/nixvim/nixos-25.05";
-    impermanence.url = "github:nix-community/impermanence";
-    treefmt-nix.url = "https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip";
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    codex.url = "github:openai/codex/rust-v0.58.0";
+    flake-utils.url = "https://gh-proxy.org/https://github.com/numtide/flake-utils/archive/refs/heads/main.zip";
+    nixpkgs.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
+    home-manager.url = "https://gh-proxy.org/https://github.com/nix-community/home-manager/archive/refs/heads/release-25.11.zip";
+    nix-darwin.url = "https://gh-proxy.org/https://github.com/nix-darwin/nix-darwin/archive/refs/heads/nix-darwin-25.11.zip";
+    flake-programs-sqlite.url = "https://gh-proxy.org/https://github.com/wamserma/flake-programs-sqlite/archive/refs/heads/main.zip";
+    nix-index-database.url = "https://gh-proxy.org/https://github.com/nix-community/nix-index-database/archive/refs/heads/main.zip";
+    nixvim.url = "https://gh-proxy.org/https://github.com/nix-community/nixvim/archive/refs/heads/nixos-25.11.zip";
+    impermanence.url = "https://gh-proxy.org/https://github.com/nix-community/impermanence/archive/refs/heads/master.zip";
+    treefmt-nix.url = "https://gh-proxy.org/https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip";
+    nixos-generators.url = "https://gh-proxy.org/https://github.com/nix-community/nixos-generators/archive/refs/heads/master.zip";
     infuse.url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
     infuse.flake = false;
 
@@ -34,7 +33,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    #codex.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -61,6 +60,8 @@
     // {
       nixosModules = import ./nixos-modules;
       nixosConfigurations = import ./nixos-configurations { inherit inputs pkgsWithSystem; };
+      darwinModules = import ./darwin-modules;
+      darwinConfigurations = import ./darwin-configurations { inherit inputs; };
       homeModules = import ./home-modules;
       homeConfigurations = import ./home-configurations { inherit inputs pkgsWithSystem; };
     };

@@ -1,7 +1,6 @@
 {
   infuse,
   nixpkgs,
-  codex,
   ...
 }@args:
 {
@@ -10,7 +9,6 @@
   };
   default = _final: prev: {
     #factorio = prev.callPackage ./factorio.nix { };
-    codex = args.codex.packages.${prev.system}.default;
     zcf = prev.callPackage ./zcf.nix { };
   };
 }

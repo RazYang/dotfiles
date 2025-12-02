@@ -6,9 +6,9 @@ in
   hello-custom = callPackage ./hello-custom.nix { };
   inherit (pkgs)
     hello
-    codex
     zcf
     ;
   nixvim = callPackage ./nixvim.nix { };
-  hm = inputs.home-manager.packages.x86_64-linux.home-manager;
+  hm = inputs.home-manager.packages.${pkgs.system}.home-manager;
+  darwin-rebuild = inputs.nix-darwin.packages.${pkgs.system}.darwin-rebuild;
 }
