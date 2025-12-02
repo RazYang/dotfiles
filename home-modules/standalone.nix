@@ -9,19 +9,19 @@
   imports = [
     inputs.self.homeModules.common
     inputs.nix-index-database.homeModules.nix-index
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ];
   programs.nix-index-database.comma.enable = true;
   nix = {
     package = pkgs.nixVersions.latest;
     settings = {
-      substituters = lib.mkForce [
+      extra-substituters = lib.mkForce [
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://mirrors.ustc.edu.cn/nix-channels/store"
         "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://nix-community.cachix.org"
       ];
-      trusted-public-keys = [
+      extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
       extra-experimental-features = "nix-command flakes";

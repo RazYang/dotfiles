@@ -1,7 +1,10 @@
-{ inputs, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   home.packages = with pkgs; [
-    #inputs.self.packages.${pkgs.system}.nixvim
+    #inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.nixvim
     nixfmt-rfc-style
     ncdu
   ];

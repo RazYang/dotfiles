@@ -2,7 +2,7 @@
   infuse,
   nixpkgs,
   ...
-}@args:
+}:
 {
   infuse = _: _: {
     inherit ((import infuse { inherit (nixpkgs) lib; }).v1) infuse;

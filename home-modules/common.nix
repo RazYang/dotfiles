@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./zsh.nix
@@ -21,9 +25,9 @@
   };
 
   programs = {
-    git = {
-      userName = "RazYang";
-      userEmail = "xzzorz@gmail.com";
+    git.settings.user = {
+      name = "RazYang";
+      email = "xzzorz@gmail.com";
     };
     home-manager.enable = true;
     tmux = {
@@ -63,7 +67,7 @@
     };
     command-not-found = {
       enable = true;
-      dbPath = inputs.flake-programs-sqlite.packages.${pkgs.system}.programs-sqlite;
+      dbPath = inputs.flake-programs-sqlite.packages.${pkgs.stdenv.hostPlatform.system}.programs-sqlite;
     };
     nix-index = {
       enable = true;
