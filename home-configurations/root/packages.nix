@@ -4,13 +4,13 @@
     jq
     vim
     gdu
-    git
+    gitMinimal
     htop
     file
     binutils
     nix-tree
-    codex
-    zcf
+    #    codex
+    #    zcf
     nixfmt-rfc-style
   ];
 }
