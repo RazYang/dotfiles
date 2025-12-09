@@ -18,16 +18,16 @@
   };
 
   inputs = {
-    flake-utils.url = "https://gh-proxy.org/https://github.com/numtide/flake-utils/archive/refs/heads/main.zip";
+    flake-utils.url = "https://github.com/numtide/flake-utils/archive/11707dc.zip";
     nixpkgs.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
-    home-manager.url = "https://gh-proxy.org/https://github.com/nix-community/home-manager/archive/refs/heads/release-25.11.zip";
-    nix-darwin.url = "https://gh-proxy.org/https://github.com/nix-darwin/nix-darwin/archive/refs/heads/nix-darwin-25.11.zip";
-    flake-programs-sqlite.url = "https://gh-proxy.org/https://github.com/wamserma/flake-programs-sqlite/archive/refs/heads/main.zip";
-    nix-index-database.url = "https://gh-proxy.org/https://github.com/nix-community/nix-index-database/archive/refs/heads/main.zip";
-    nixvim.url = "https://gh-proxy.org/https://github.com/nix-community/nixvim/archive/refs/heads/nixos-25.11.zip";
-    impermanence.url = "https://gh-proxy.org/https://github.com/nix-community/impermanence/archive/refs/heads/master.zip";
-    treefmt-nix.url = "https://gh-proxy.org/https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip";
-    nixos-generators.url = "https://gh-proxy.org/https://github.com/nix-community/nixos-generators/archive/refs/heads/master.zip";
+    home-manager.url = "https://github.com/nix-community/home-manager/archive/20561be.zip";
+    nix-darwin.url = "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip";
+    flake-programs-sqlite.url = "https://github.com/wamserma/flake-programs-sqlite/archive/99c5eea.zip";
+    nix-index-database.url = "https://github.com/nix-community/nix-index-database/archive/4194c58.zip";
+    nixvim.url = "https://github.com/nix-community/nixvim/archive/a9d0e06.zip";
+    impermanence.url = "https://github.com/nix-community/impermanence/archive/4b3e914.zip";
+    treefmt-nix.url = "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip";
+    nixos-generators.url = "https://github.com/nix-community/nixos-generators/archive/032a187.zip";
     infuse.url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
     infuse.flake = false;
 

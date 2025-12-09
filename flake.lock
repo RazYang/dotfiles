@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762440070,
-        "narHash": "sha256-xxdepIcb39UJ94+YydGP221rjnpkDZUlykKuF54PsqI=",
+        "lastModified": 1763759067,
+        "narHash": "sha256-LlLt2Jo/gMNYAwOgdRQBrsRoOz7BPRkzvNaI/fzXi2Q=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "26d05891e14c88eb4a5d5bee659c0db5afb609d8",
+        "rev": "2cccadc7357c0ba201788ae99c4dfa90728ef5e0",
         "type": "github"
       },
       "original": {
@@ -31,14 +31,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1764640899,
-        "narHash": "sha256-jI/Li7idc9TtY2Jx2wxkLIVFGg+m8XKF/enefjKs+/0=",
+        "lastModified": 1765189929,
+        "narHash": "sha256-QFZkwLMQuBESsxKEd6NwhawUk2xGWv4VPnY5Rh3+odM=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/wamserma/flake-programs-sqlite/archive/refs/heads/main.zip"
+        "url": "https://github.com/wamserma/flake-programs-sqlite/archive/99c5eea.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/wamserma/flake-programs-sqlite/archive/refs/heads/main.zip"
+        "url": "https://github.com/wamserma/flake-programs-sqlite/archive/99c5eea.zip"
       }
     },
     "flake-utils": {
@@ -49,11 +49,11 @@
         "lastModified": 1731533236,
         "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/numtide/flake-utils/archive/refs/heads/main.zip"
+        "url": "https://github.com/numtide/flake-utils/archive/11707dc.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/numtide/flake-utils/archive/refs/heads/main.zip"
+        "url": "https://github.com/numtide/flake-utils/archive/11707dc.zip"
       }
     },
     "flake-utils_2": {
@@ -81,14 +81,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1764613336,
-        "narHash": "sha256-L979az28t/+SXvYw9qhOno5HLlDwkZOpz6LzCLnjmRM=",
+        "lastModified": 1765170903,
+        "narHash": "sha256-O8VTGey1xxiRW+Fpb+Ps9zU7ShmxUA1a7cMTcENCVNg=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/home-manager/archive/refs/heads/release-25.11.zip"
+        "url": "https://github.com/nix-community/home-manager/archive/20561be.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/home-manager/archive/refs/heads/release-25.11.zip"
+        "url": "https://github.com/nix-community/home-manager/archive/20561be.zip"
       }
     },
     "impermanence": {
@@ -96,11 +96,11 @@
         "lastModified": 1737831083,
         "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/impermanence/archive/refs/heads/master.zip"
+        "url": "https://github.com/nix-community/impermanence/archive/4b3e914.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/impermanence/archive/refs/heads/master.zip"
+        "url": "https://github.com/nix-community/impermanence/archive/4b3e914.zip"
       }
     },
     "infuse": {
@@ -154,14 +154,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1764161084,
-        "narHash": "sha256-HN84sByg9FhJnojkGGDSrcjcbeioFWoNXfuyYfJ1kBE=",
+        "lastModified": 1765066094,
+        "narHash": "sha256-0YSU35gfRFJzx/lTGgOt6ubP8K6LeW0vaywzNNqxkl4=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-darwin/nix-darwin/archive/refs/heads/nix-darwin-25.11.zip"
+        "url": "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-darwin/nix-darwin/archive/refs/heads/nix-darwin-25.11.zip"
+        "url": "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip"
       }
     },
     "nix-index-database": {
@@ -171,14 +171,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1764475780,
-        "narHash": "sha256-77jL5H5x51ksLiOUDjY0ZK8e2T4ZXLhj3ap8ETvknWI=",
+        "lastModified": 1765080594,
+        "narHash": "sha256-5t3d655GqLblE+p5xN5ntkeRfZBesN7vehOWcRcU88M=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/nix-index-database/archive/refs/heads/main.zip"
+        "url": "https://github.com/nix-community/nix-index-database/archive/4194c58.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/nix-index-database/archive/refs/heads/main.zip"
+        "url": "https://github.com/nix-community/nix-index-database/archive/4194c58.zip"
       }
     },
     "nixlib": {
@@ -207,19 +207,19 @@
         "lastModified": 1764234087,
         "narHash": "sha256-NHF7QWa0ZPT8hsJrvijREW3+nifmF2rTXgS2v0tpcEA=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/nixos-generators/archive/refs/heads/master.zip"
+        "url": "https://github.com/nix-community/nixos-generators/archive/032a187.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/nixos-generators/archive/refs/heads/master.zip"
+        "url": "https://github.com/nix-community/nixos-generators/archive/032a187.zip"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1764522689,
-        "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
+        "lastModified": 1764983851,
+        "narHash": "sha256-y7RPKl/jJ/KAP/VKLMghMgXTlvNIJMHKskl8/Uuar7o=",
         "ref": "nixos-25.11",
-        "rev": "8bb5646e0bed5dbd3ab08c7a7cc15b75ab4e1d0f",
+        "rev": "d9bc5c7dceb30d8d6fafa10aeb6aa8a48c218454",
         "shallow": true,
         "type": "git",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
@@ -241,14 +241,14 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1764614282,
-        "narHash": "sha256-oHT1/E5yf9lvOVHtO5joevADcQLGp5mVab5shVVqxso=",
+        "lastModified": 1765212031,
+        "narHash": "sha256-vOaAKjFYTrWIjGU2f5ORH8Jr5OfnzcgrF0qQb9RExaI=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/nixvim/archive/refs/heads/nixos-25.11.zip"
+        "url": "https://github.com/nix-community/nixvim/archive/a9d0e06.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/nix-community/nixvim/archive/refs/heads/nixos-25.11.zip"
+        "url": "https://github.com/nix-community/nixvim/archive/a9d0e06.zip"
       }
     },
     "nuschtosSearch": {
@@ -344,11 +344,11 @@
         "lastModified": 1762938485,
         "narHash": "sha256-AlEObg0syDl+Spi4LsZIBrjw+snSVU4T8MOeuZJUJjM=",
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip"
+        "url": "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://gh-proxy.org/https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip"
+        "url": "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip"
       }
     }
   },
