@@ -32,10 +32,10 @@
         };
       };
     };
-    #v2raya.enable = true;
     dbus.implementation = "broker";
+
     nginx = {
-      enable = true;
+      enable = false;
       group = "acme";
       package = pkgs.nginxMainline;
       clientMaxBodySize = "100m";
@@ -62,7 +62,7 @@
       ];
     };
     lldap = {
-      enable = true;
+      enable = false;
       settings = {
         ldap_base_dn = "dc=razyang,dc=com";
         ldap_user_dn = "razyang";
@@ -71,7 +71,7 @@
     bitmagnet.enable = false;
 
     postgresql = {
-      enable = true;
+      enable = false;
       enableJIT = true;
       enableTCPIP = true;
       #package = pkgs.postgresql_17_jit;
@@ -129,6 +129,7 @@
   #  gcc.tune = "znver2";
   #};
 
+  environment.enableAllTerminfo = true;
   environment.systemPackages = with pkgs; [
     linux-manual
     man-pages

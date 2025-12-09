@@ -18,6 +18,13 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.glibcLocales = pkgs.glibcLocales.override {
+    allLocales = false;
+    locales = [
+      "en_US.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
+    ];
+  };
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "zh_CN.UTF-8";
     LC_IDENTIFICATION = "zh_CN.UTF-8";
