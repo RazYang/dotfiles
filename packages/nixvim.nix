@@ -1,10 +1,5 @@
+{ pkgs }: # inputs.nixvim.legacyPackages."${system}".makeNixvim
 {
-  inputs,
-  pkgs,
-  system,
-  ...
-}:
-inputs.nixvim.legacyPackages."${system}".makeNixvim {
   viAlias = true;
   vimAlias = true;
   clipboard.providers = {
@@ -156,9 +151,9 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
       servers = {
         bashls.enable = true;
         nil_ls.enable = true;
-        ruff.enable = true;
+        ruff.enable = false;
         basedpyright = {
-          enable = true;
+          enable = false;
           settings = {
             python.pythonPath = "./.venv/bin/python3";
             basedpyright = {
@@ -172,16 +167,16 @@ inputs.nixvim.legacyPackages."${system}".makeNixvim {
           };
         };
         rust_analyzer = {
-          enable = true;
+          enable = false;
           installCargo = true;
           installRustc = true;
         };
-        clangd.enable = true;
-        gopls.enable = true;
-        cmake.enable = true;
-        yamlls.enable = true;
-        jsonls.enable = true;
-        marksman.enable = true;
+        clangd.enable = false;
+        gopls.enable = false;
+        cmake.enable = false;
+        yamlls.enable = false;
+        jsonls.enable = false;
+        marksman.enable = false;
       };
       keymaps = {
         diagnostic = {

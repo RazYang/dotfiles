@@ -9,7 +9,7 @@
         #  hello
         #  zcf
         #  ;
-        #nixvim = callPackage ./nixvim.nix { };
+        nixvim = inputs'.nixvim.legacyPackages.makeNixvim (import ./nixvim.nix { inherit pkgs; });
         hm = inputs'.home-manager.packages.home-manager;
       };
     };
