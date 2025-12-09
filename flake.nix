@@ -56,7 +56,7 @@
         config,
         ...
       }:
-      lib.fix (final: {
+      {
         systems = import inputs.systems;
         imports = [
           inputs.home-manager.flakeModules.home-manager
@@ -68,6 +68,6 @@
           ./darwin
         ];
         flake.flakeModules = import ./flake-modules;
-      })
+      }
     );
 }
