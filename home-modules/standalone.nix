@@ -8,10 +8,8 @@
 {
   imports = [
     inputs.self.homeModules.common
-    inputs.nix-index-database.homeModules.nix-index
     inputs.nixvim.homeModules.nixvim
   ];
-  programs.nix-index-database.comma.enable = true;
   nix = {
     package = pkgs.nixVersions.latest;
     settings = {

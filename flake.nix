@@ -22,7 +22,6 @@
     nixpkgs.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
     home-manager.url = "https://github.com/nix-community/home-manager/archive/20561be.zip";
     nix-darwin.url = "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip";
-    flake-programs-sqlite.url = "https://github.com/wamserma/flake-programs-sqlite/archive/99c5eea.zip";
     nix-index-database.url = "https://github.com/nix-community/nix-index-database/archive/4194c58.zip";
     nixvim.url = "https://github.com/nix-community/nixvim/archive/a9d0e06.zip";
     impermanence.url = "https://github.com/nix-community/impermanence/archive/4b3e914.zip";
@@ -32,8 +31,6 @@
     infuse.flake = false;
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    flake-programs-sqlite.inputs.nixpkgs.follows = "nixpkgs";
-    flake-programs-sqlite.inputs.utils.follows = "flake-utils";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";

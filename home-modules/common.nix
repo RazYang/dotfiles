@@ -6,22 +6,34 @@
 {
   imports = [
     ./zsh.nix
+    inputs.nix-index-database.homeModules.nix-index
   ];
-  nix.registry = {
-    nixpkgs = {
-      from = {
-        id = "nixpkgs";
-        type = "indirect";
+  nix = {
+    keepOldNixPath = false;
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    registry = {
+      nixpkgs = {
+        from = {
+          id = "nixpkgs";
+          type = "indirect";
+        };
+        flake = inputs.nixpkgs;
       };
-      flake = inputs.nixpkgs;
-    };
-    home-manager = {
-      from = {
-        id = "home-manager";
-        type = "indirect";
+      home-manager = {
+        from = {
+          id = "home-manager";
+          type = "indirect";
+        };
+        flake = inputs.home-manager;
       };
-      flake = inputs.home-manager;
     };
+  };
+  i18n.glibcLocales = pkgs.glibcLocales.override {
+    allLocales = false;
+    locales = [
+      "en_US.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
+    ];
   };
 
   programs = {
@@ -65,16 +77,19 @@
       enable = true;
       enableZshIntegration = true;
     };
+    nix-index-database.comma.enable = true;
+
     command-not-found = {
       enable = true;
-      dbPath = inputs.flake-programs-sqlite.packages.${pkgs.stdenv.hostPlatform.system}.programs-sqlite;
+      #dbPath = "";
     };
+
     nix-index = {
       enable = true;
       enableZshIntegration = false;
       enableBashIntegration = false;
     };
-    navi.enable = true;
+
     ripgrep.enable = true;
     broot.enable = true;
     bottom.enable = true;
