@@ -1,4 +1,6 @@
-{
-  common = import ./common.nix;
-  standalone = import ./standalone.nix;
-}
+{ lib, self, ... }:
+self.lib.importSubfolders ./.
+|> lib.setAttrByPath [
+  "flake"
+  "homeModules"
+]

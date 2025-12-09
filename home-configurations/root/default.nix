@@ -1,22 +1,14 @@
-{
-  inputs,
-  pkgs,
-  ...
-}:
-inputs.home-manager.lib.homeManagerConfiguration {
-  inherit pkgs;
-  extraSpecialArgs = {
-    inherit inputs;
-  };
+username: {
+  system = "x86_64-linux";
   modules = [
-    inputs.self.homeModules.standalone
-    ./packages.nix
-    {
+    #inputs'.self.homeModules.standalone
+    #./packages.nix
+    ({
       home = {
-        username = "root";
-        homeDirectory = "/root";
+        inherit username;
+        homeDirectory = "/${username}";
         stateVersion = "24.05";
       };
-    }
+    })
   ];
 }

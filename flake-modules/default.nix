@@ -1,0 +1,3 @@
+{
+  treefmt = import ./treefmt.nix;
+}

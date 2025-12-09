@@ -77,17 +77,13 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    command-not-found.enable = false;
+
     nix-index-database.comma.enable = true;
-
-    command-not-found = {
-      enable = true;
-      #dbPath = "";
-    };
-
     nix-index = {
       enable = true;
-      enableZshIntegration = false;
-      enableBashIntegration = false;
+      package = inputs.nix-index-database.packages."${pkgs.system}".nix-index-with-small-db;
     };
 
     ripgrep.enable = true;

@@ -10,6 +10,5 @@
     nixfmt-rfc-style
     nix-tree
     urlencode
-    #    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.nixvim
   ];
 }

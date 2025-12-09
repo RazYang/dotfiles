@@ -7,8 +7,7 @@
 }:
 {
   imports = [
-    inputs.self.homeModules.common
-    inputs.nixvim.homeModules.nixvim
+    ../common
   ];
   nix = {
     package = pkgs.nixVersions.latest;

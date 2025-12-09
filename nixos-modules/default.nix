@@ -1,3 +1,6 @@
-{
-  common = import ./common.nix;
-}
+{ lib, self, ... }:
+self.lib.importSubfolders ./.
+|> lib.setAttrByPath [
+  "flake"
+  "nixosModules"
+]

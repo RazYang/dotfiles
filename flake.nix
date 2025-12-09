@@ -14,57 +14,63 @@
     experimental-features = [
       "flakes"
       "nix-command"
+      "pipe-operators"
     ];
   };
 
   inputs = {
     flake-utils.url = "https://github.com/numtide/flake-utils/archive/11707dc.zip";
     nixpkgs.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
+    nixpkgs-lib.url = "https://github.com/nix-community/nixpkgs.lib/archive/e0cad97.zip";
     home-manager.url = "https://github.com/nix-community/home-manager/archive/20561be.zip";
     nix-darwin.url = "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip";
     nix-index-database.url = "https://github.com/nix-community/nix-index-database/archive/4194c58.zip";
-    nixvim.url = "https://github.com/nix-community/nixvim/archive/a9d0e06.zip";
+    #nixvim.url = "https://github.com/nix-community/nixvim/archive/a9d0e06.zip";
     impermanence.url = "https://github.com/nix-community/impermanence/archive/4b3e914.zip";
     treefmt-nix.url = "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip";
     nixos-generators.url = "https://github.com/nix-community/nixos-generators/archive/032a187.zip";
+    flake-parts.url = "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip";
     infuse.url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
     infuse.flake = false;
+    systems.url = "path:./systems.nix";
+    systems.flake = false;
 
+    flake-utils.inputs.systems.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    #nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    #nixvim.inputs.systems.follows = "systems";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-generators.inputs.nixlib.follows = "nixpkgs-lib";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-    {
-      nixpkgs,
-      treefmt-nix,
-      flake-utils,
-      ...
-    }@inputs:
-    let
-      inherit (nixpkgs) lib;
-      nixpkgsConfig = {
-        overlays = lib.attrValues (import ./overlays inputs);
-        config.allowUnfree = true;
-      };
-      pkgsWithSystem = system: import nixpkgs (lib.mergeAttrs nixpkgsConfig { inherit system; });
-      eachSystem = fun: flake-utils.lib.eachDefaultSystem (system: fun (pkgsWithSystem system));
-    in
-    eachSystem (pkgs: {
-      packages = import ./packages { inherit inputs pkgs; };
-      devShells = import ./dev-shells { inherit inputs pkgs; };
-      formatter = (treefmt-nix.lib.evalModule pkgs (import ./treefmt.nix)).config.build.wrapper;
-    })
-    // {
-      nixosModules = import ./nixos-modules;
-      nixosConfigurations = import ./nixos-configurations { inherit inputs pkgsWithSystem; };
-      darwinModules = import ./darwin-modules;
-      darwinConfigurations = import ./darwin-configurations { inherit inputs; };
-      homeModules = import ./home-modules;
-      homeConfigurations = import ./home-configurations { inherit inputs pkgsWithSystem; };
-    };
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      {
+        inputs,
+        lib,
+        config,
+        ...
+      }:
+      lib.fix (final: {
+        systems = import inputs.systems;
+        imports = [
+          inputs.home-manager.flakeModules.home-manager
+          (import ./flake-modules).treefmt
+          ./lib
+          ./packages
+          ./home-modules
+          ./home-configurations
+          ./nixos-modules
+          ./nixos-configurations
+          #./darwin-modules
+          #./darwin-configurations
+        ];
+        flake.flakeModules = import ./flake-modules;
+      })
+    );
 }

@@ -1,11 +1,10 @@
-{ inputs, pkgsWithSystem, ... }:
-inputs.nixpkgs.lib.nixosSystem rec {
+{ inputs, self }:
+{
   system = "x86_64-linux";
-  pkgs = pkgsWithSystem system;
-  modules = with inputs; [
+  modules = [
     self.nixosModules.common
-    home-manager.nixosModules.home-manager
-    impermanence.nixosModules.impermanence
+    inputs.home-manager.nixosModules.home-manager
+    inputs.impermanence.nixosModules.impermanence
     ./configuration.nix
     ./hardware-configuration.nix
   ];
