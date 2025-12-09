@@ -63,12 +63,9 @@
           (import ./flake-modules).treefmt
           ./lib
           ./packages
-          ./home-modules
-          ./home-configurations
-          ./nixos-modules
-          ./nixos-configurations
-          #./darwin-modules
-          #./darwin-configurations
+          ./home
+          ./nixos
+          ./darwin
         ];
         flake.flakeModules = import ./flake-modules;
       })
