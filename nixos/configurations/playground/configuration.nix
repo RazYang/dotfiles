@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   # Bootloader.
   boot = {
@@ -99,8 +99,16 @@
   };
 
   users.users.root.initialHashedPassword = "$y$j9T$.BxY4vIjQZapjGvpFvNJy1$u.Z.DuX4/z8hk81K8otcOILeECVx53IqRMlcKj/ek87";
-
-  #environment.memoryAllocator.provider = "mimalloc";
+  home-manager.extraSpecialArgs.inputs = inputs;
+  home-manager.users.root =
+    { inputs, ... }:
+    {
+      imports =
+        (inputs.self.homeConfigurations."root@playground".mkModules {
+          username = "root";
+          inherit inputs;
+        }).modules;
+    };
   environment.persistence."/nix/persistent" = {
     hideMounts = true;
     directories = [

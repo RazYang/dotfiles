@@ -9,7 +9,7 @@
   imports = [
     ../common
   ];
-  nix = {
+  nix = lib.mkDefault {
     package = pkgs.nixVersions.latest;
     settings = {
       extra-substituters = lib.mkForce [

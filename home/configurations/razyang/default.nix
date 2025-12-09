@@ -1,8 +1,8 @@
-{ username, self }:
+{ username, inputs }:
 {
   system = "x86_64-linux";
   modules = [
-    self.homeModules.standalone
+    inputs.self.homeModules.standalone
     ./packages.nix
     ({
       home = {

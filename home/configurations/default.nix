@@ -11,16 +11,19 @@ let
   #   - system: 目标系统架构（如 "x86_64-linux"）
   #   - modules: home-manager 模块列表
   mkHome =
-    { system, modules }:
-    inputs.home-manager.lib.homeManagerConfiguration (
-      withSystem system (
+    {
+      system,
+      modules,
+    }:
+    let
+      homeConfig =
         { pkgs, ... }:
         {
           inherit pkgs modules;
           extraSpecialArgs.inputs = inputs;
-        }
-      )
-    );
+        };
+    in
+    inputs.home-manager.lib.homeManagerConfiguration (withSystem system homeConfig);
 
   # 从字符串中提取用户名
   # 例如: "user@host" -> "user"
@@ -35,10 +38,13 @@ let
   # 将子目录的配置转换为 home-manager 配置
   mapHomeConfigurations = lib.mapAttrs (
     n: v:
-    mkHome (v {
-      inherit self;
+    (mkHome (v {
+      inherit inputs;
       username = (extractUsername n);
-    })
+    }))
+    // {
+      mkModules = v;
+    }
   );
 in
 self.lib.importSubfolders ./.
