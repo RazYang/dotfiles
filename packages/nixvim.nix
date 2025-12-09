@@ -202,12 +202,7 @@
 
     # [ https://github.com/onsails/lspkind.nvim ]
     # The plugin adds vscode-like icons to Neovim LSP completions.
-    lspkind = {
-      enable = true;
-      symbolMap = {
-        Copilot = "";
-      };
-    };
+    lspkind.enable = true;
 
     ##############################
     ### completion
