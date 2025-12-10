@@ -83,7 +83,8 @@
     nix-index-database.comma.enable = true;
     nix-index = {
       enable = true;
-      package = inputs.nix-index-database.packages."${pkgs.system}".nix-index-with-small-db;
+      package =
+        inputs.nix-index-database.packages."${pkgs.stdenv.hostPlatform.system}".nix-index-with-small-db;
     };
 
     ripgrep.enable = true;

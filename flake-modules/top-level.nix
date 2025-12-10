@@ -11,6 +11,7 @@ lib.fix (final: {
     ../packages
     ../dev-shells
     ../bundlers
+    ../apps
     ../home
     ../nixos
     ../darwin
