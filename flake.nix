@@ -57,18 +57,22 @@
         config,
         ...
       }:
+      let
+        flakeLib = (import ./lib { inherit lib; }).flake.lib;
+        flakeModules = ./flake-modules |> flakeLib.importSubfolders;
+      in
       {
         systems = import inputs.systems;
         imports = [
           inputs.home-manager.flakeModules.home-manager
-          (import ./flake-modules).treefmt
           ./lib
           ./packages
           ./home
           ./nixos
           ./darwin
-        ];
-        flake.flakeModules = import ./flake-modules;
+        ]
+        ++ (flakeModules |> builtins.attrValues);
+        flake.flakeModules = flakeModules;
       }
     );
 }

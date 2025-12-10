@@ -1,88 +1,41 @@
-# Dotfiles
+# dotfiles (Nix Flake)
 
-Razyang's dotfiles managed by nix and home-manager.
+个人 Nix Flake，用来管理 RazYang 的 NixOS、独立 Home Manager 与 macOS 环境，内置镜像加速、自定义包和示例服务配置。
 
-# Show what's supported
+## 支持矩阵
+- 系统架构：`x86_64-linux`、`aarch64-linux`、`aarch64-darwin`
+- 主机配置：`playground`（NixOS，impermanence + home-manager + 示例服务）
+- Home 配置：`razyang`、`root`、`root@playground`（均为 x86_64-linux）、`yang`（aarch64-darwin）
+- 导出包：`hello-custom`、`nixvim`、`hm`（home-manager 可执行）
+- 格式化：treefmt（nixfmt-rfc-style、jsonfmt）
 
-```bash
-nix flake show "github:razyang/dotfiles"
-```
+## 仓库结构
+- `flake.nix`：输入源、镜像、flake-parts 入口
+- `systems.nix`：支持的 system 列表
+- `home/`：homeModules 与 homeConfigurations（zsh/tmux/nix-index 等基础模块）
+- `nixos/`：nixosModules 与 nixosConfigurations（当前包含 playground 主机）
+- `darwin/`：占位目录，后续扩展 nix-darwin
+- `packages/`：自定义包（hello、nixvim、hello-oci 等）
+- `overlays/`：额外 overlay（如 zcf、infuse）
+- `flake-modules/`：flake-parts 模块
+- `dev-shells/`：独立 mkShell（ctf/test），需手动通过路径调用
 
-or using `nix repl`, `:lf "github:razyang/dotfiles"` function. or using git to
-download this flake
-`nix flake show "git+https://github.com/Zzorz/dotfiles?submodules=1&shallow=1"`
+## 快速开始
+1) 安装 Nix 并启用 flakes（nix.conf 中开启 `nix-command flakes pipe-operators`）。
+2) 克隆仓库：`git clone <repo-url> && cd dotfiles`
+3) 预览输出：`nix flake show`
+4) Home Manager：
+   - 桌面：`home-manager switch --flake .#razyang`
+   - playground root：`home-manager switch --flake .#root@playground`
+   - macOS：`home-manager switch --flake .#yang`
+5) NixOS 主机：`sudo nixos-rebuild switch --flake .#playground`
+6) 构建包：`nix build .#hello-custom`、`nix build .#nixvim`、`nix build .#hm`
+7) 快捷切换 HM：`nix run .#hm-switch -- <attr>`（默认 `$HM_SWITCH_ATTR` 或 `$USER`）
+8) 进入开发环境：`nix develop -f dev-shells/ctf`（或 `-f dev-shells/test`，目前未纳入 flake 输出）
+9) 代码格式化：`nix fmt`
 
-# Installation
+## 额外说明
+- 默认使用中科大/清华/交大镜像及 nix-community cachix，加快拉取速度。
+- Home 模块内置 zsh + tmux + nix-index/nix-index-database、Atuin、fzf、zoxide 等常用工具。
+- NixOS `playground` 示例启用了 impermanence、dae、samba、nginx/ACME（按需开启）、postgresql 等占位服务，可按需裁剪。
 
-## for non nixos host
-
-### Install nix first
-
-```bash
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
-
-### Add experimental features setting to /etc/nix/nix.conf
-
-```bash
-echo 'extra-experimental-features = nix-command flakes' >> /etc/nix/nix.conf
-```
-
-### using home-manager, switch to my config
-
-```bash
-nix run 'github:nix-community/home-manager' -- switch --flake 'github:razyang/dotfiles'
-```
-
-OR
-
-```bash
-nix run 'git+https://github.com/nix-community/home-manager?submodules=1&shallow=1' -- switch --flake 'git+https://github.com/Zzorz/dotfiles?submodules=1&shallow=1'
-```
-
-suppurted usernames are `razyang`,`test` and `root`.
-
-## for nixos
-
-```bash
-nixos-rebuild switch --flake "github:razyang/dotfiles"
-```
-
-OR
-
-```bash
-nixos-rebuild switch --flake 'git+https://github.com/Zzorz/dotfiles?submodules=1&shallow=1'
-```
-
-suppurted hostnames are `playground`, `adguardhome` and `fileserver`
-
-### Just neovim alone
-
-```bash
-nix profile install 'github:razyang/dotfiles#nixvim'
-```
-
-Without install
-
-```bash
-nix run 'github:razyang/dotfiles#nixvim'
-```
-
-# pack any executable in nixpkgs and run it anywhre
-
-here's a nix bundler in this project which base on bwrap and erofs-utils, it's
-simple but very useful:
-
-```bash
-$ nix bundle --bundler 'github:Zzorz/dotfiles#bwrap' 'nixpkgs#nginx'
-$ nginx-1.26.2.tar.gz
-$ ./nginx-1.26.2 -v
-nginx version: nginx/1.26.2
-```
-
-# Thanks
-
-A huge thank you to [@accelbread](https://github.com/accelbread) for his
-outstanding work on [flakelight](https://github.com/nix-community/flakelight),
-which has greatly simplified the structure of this project, making it much
-neater, cleaner, and easier to understand.
