@@ -5,8 +5,6 @@ let
   hmBin = "${homeManager}/bin/home-manager";
 in
 pkgs.writeShellScriptBin "hm-switch" ''
-  #!/usr/bin/env bash
-  set -euo pipefail
   if [ "$#" -gt 0 ]; then
     exec ${hmBin} switch --flake "${inputs.self}#''${@}"
   else
