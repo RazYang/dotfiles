@@ -2,7 +2,9 @@
   "nodes": {
     "devshell": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1764011051,
@@ -196,18 +198,19 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1762156382,
-        "narHash": "sha256-Yg7Ag7ov5+36jEFC1DaZh/12SEXo6OO3/8rqADRxiqs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "7241bcbb4f099a66aafca120d37c65e8dda32717",
-        "type": "github"
+        "lastModified": 1764983851,
+        "narHash": "sha256-y7RPKl/jJ/KAP/VKLMghMgXTlvNIJMHKskl8/Uuar7o=",
+        "ref": "nixos-25.11",
+        "rev": "d9bc5c7dceb30d8d6fafa10aeb6aa8a48c218454",
+        "shallow": true,
+        "type": "git",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "ref": "nixos-25.11",
+        "shallow": true,
+        "type": "git",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
       }
     },
     "nixpkgs-lib": {
@@ -216,23 +219,6 @@
         "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
         "ref": "nixos-25.11",
         "rev": "8bb5646e0bed5dbd3ab08c7a7cc15b75ab4e1d0f",
-        "shallow": true,
-        "type": "git",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
-      },
-      "original": {
-        "ref": "nixos-25.11",
-        "shallow": true,
-        "type": "git",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1764983851,
-        "narHash": "sha256-y7RPKl/jJ/KAP/VKLMghMgXTlvNIJMHKskl8/Uuar7o=",
-        "ref": "nixos-25.11",
-        "rev": "d9bc5c7dceb30d8d6fafa10aeb6aa8a48c218454",
         "shallow": true,
         "type": "git",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
@@ -291,6 +277,18 @@
         "type": "github"
       }
     },
+    "process-compose-flake": {
+      "locked": {
+        "lastModified": 1764915241,
+        "narHash": "sha256-vTqn6IAkZhuuctvkxjhzI1EEybyzwaNd7HJvhF662O8=",
+        "type": "tarball",
+        "url": "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip"
+      }
+    },
     "root": {
       "inputs": {
         "devshell": "devshell",
@@ -302,11 +300,25 @@
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-lib": "nixpkgs-lib",
         "nixvim": "nixvim",
+        "process-compose-flake": "process-compose-flake",
+        "services-flake": "services-flake",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "services-flake": {
+      "locked": {
+        "lastModified": 1765168239,
+        "narHash": "sha256-NZ7H4lbbytPNwe4ZyvovycuS1BMBFwJrptgX7NiF+F0=",
+        "type": "tarball",
+        "url": "https://github.com/juspay/services-flake/archive/8b6244f.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/juspay/services-flake/archive/8b6244f.zip"
       }
     },
     "systems": {
