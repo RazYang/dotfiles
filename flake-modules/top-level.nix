@@ -2,6 +2,7 @@
   inputs,
   lib,
   systems,
+  myLib,
   ...
 }:
 lib.fix (final: {
@@ -17,6 +18,6 @@ lib.fix (final: {
   ]
   ++ (lib.attrValues final.flake.flakeModules);
 
-  flake.lib = import ../lib { inherit (inputs.nixpkgs-lib) lib; };
-  flake.flakeModules = final.flake.lib.importSubfolders ./.;
+  flake.lib = myLib;
+  flake.flakeModules = myLib.importSubfolders ./.;
 })

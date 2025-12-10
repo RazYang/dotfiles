@@ -1,5 +1,7 @@
-{ pkgs, homeManager }:
+{ pkgs, inputs }:
 let
+  system = pkgs.stdenv.hostPlatform.system;
+  homeManager = inputs.home-manager.packages.${system}.home-manager;
   hmBin = "${homeManager}/bin/home-manager";
 in
 pkgs.writeShellScriptBin "hm-switch" ''
