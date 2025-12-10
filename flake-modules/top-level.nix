@@ -9,6 +9,7 @@ lib.fix (final: {
   inherit systems;
   imports = [
     inputs.home-manager.flakeModules.home-manager
+    inputs.devshell.flakeModule
     ../packages
     ../dev-shells
     ../bundlers

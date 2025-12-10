@@ -31,6 +31,7 @@
     nixos-generators.url = "https://github.com/nix-community/nixos-generators/archive/032a187.zip";
     flake-parts.url = "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip";
     infuse.url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
+    devshell.url = "https://github.com/numtide/devshell/archive/17ed8d9.zip";
     infuse.flake = false;
     systems.url = "path:./systems.nix";
     systems.flake = false;

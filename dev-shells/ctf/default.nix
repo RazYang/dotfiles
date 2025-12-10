@@ -11,10 +11,8 @@ let
   );
 
 in
-pkgs.mkShell {
-  name = "ctf";
-  LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
-  buildInputs = with pkgs; [
+{
+  devshell.packages = with pkgs; [
     pythonEnv
     sqlmap
     wget
@@ -30,7 +28,6 @@ pkgs.mkShell {
     pwntools
     gdb
     gef
-    pwndbg
     one_gadget
     ropgadget
     metasploit

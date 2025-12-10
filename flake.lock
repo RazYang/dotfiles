@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "devshell": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1764011051,
+        "narHash": "sha256-M7SZyPZiqZUR/EiiBJnmyUbOi5oE/03tCeFrTiUZchI=",
+        "type": "tarball",
+        "url": "https://github.com/numtide/devshell/archive/17ed8d9.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/numtide/devshell/archive/17ed8d9.zip"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -181,10 +196,26 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1764983851,
-        "narHash": "sha256-y7RPKl/jJ/KAP/VKLMghMgXTlvNIJMHKskl8/Uuar7o=",
+        "lastModified": 1762156382,
+        "narHash": "sha256-Yg7Ag7ov5+36jEFC1DaZh/12SEXo6OO3/8rqADRxiqs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7241bcbb4f099a66aafca120d37c65e8dda32717",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "lastModified": 1764522689,
+        "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
         "ref": "nixos-25.11",
-        "rev": "d9bc5c7dceb30d8d6fafa10aeb6aa8a48c218454",
+        "rev": "8bb5646e0bed5dbd3ab08c7a7cc15b75ab4e1d0f",
         "shallow": true,
         "type": "git",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
@@ -196,12 +227,12 @@
         "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
       }
     },
-    "nixpkgs-lib": {
+    "nixpkgs_2": {
       "locked": {
-        "lastModified": 1764522689,
-        "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
+        "lastModified": 1764983851,
+        "narHash": "sha256-y7RPKl/jJ/KAP/VKLMghMgXTlvNIJMHKskl8/Uuar7o=",
         "ref": "nixos-25.11",
-        "rev": "8bb5646e0bed5dbd3ab08c7a7cc15b75ab4e1d0f",
+        "rev": "d9bc5c7dceb30d8d6fafa10aeb6aa8a48c218454",
         "shallow": true,
         "type": "git",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
@@ -262,6 +293,7 @@
     },
     "root": {
       "inputs": {
+        "devshell": "devshell",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
@@ -270,7 +302,7 @@
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-lib": "nixpkgs-lib",
         "nixvim": "nixvim",
         "systems": "systems_2",
