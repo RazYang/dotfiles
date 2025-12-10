@@ -5,6 +5,9 @@
   ...
 }:
 {
+  imports = [
+    inputs.flake-parts.flakeModules.bundlers
+  ];
   perSystem =
     { pkgs, inputs', ... }:
     let
