@@ -7,11 +7,9 @@ in
 pkgs.writeShellScriptBin "hm-switch" ''
   #!/usr/bin/env bash
   set -euo pipefail
-
-  flake="''${HM_SWITCH_FLAKE:-.}"
   if [ "$#" -gt 0 ]; then
-    exec ${hmBin} switch --flake "''${@}"
+    exec ${hmBin} switch --flake "''${inputs.self}#''${@}"
   else
-    exec ${hmBin} switch --flake "''${flake}"
+    exec ${hmBin} switch --flake "''${inputs.self}"
   fi
 ''
