@@ -1,12 +1,14 @@
-{ pkgs, inputs, ... }:
-let
-  system = pkgs.stdenv.hostPlatform.system;
-in
+{
+  pkgs,
+  self',
+  hello-custom,
+  ...
+}:
 pkgs.dockerTools.buildImage {
   name = "hello-oci";
   tag = "latest";
-  copyToRoot = [ inputs.self.packages.${system}.hello ];
+  copyToRoot = [ self'.packages.hello-custom ];
   config = {
-    Cmd = [ "${inputs.self.packages.${system}.hello}/bin/hello" ];
+    Cmd = [ "${hello-custom}/bin/hello" ]; # same as self'.packages.hello-custom
   };
 }

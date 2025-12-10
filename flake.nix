@@ -58,9 +58,10 @@
     let
       systems = import inputs.systems;
       myLib = import ./lib { inherit (inputs.nixpkgs-lib) lib; };
+      infuse = (import inputs.infuse { inherit (inputs.nixpkgs-lib) lib; }).v1.infuse;
       mkFlake = flake-parts.lib.mkFlake {
         inherit inputs;
-        specialArgs = { inherit systems myLib; };
+        specialArgs = { inherit systems myLib infuse; };
       };
       topModule = import ./flake-modules/top-level.nix;
 
