@@ -10,6 +10,7 @@ lib.fix (final: {
   imports = [
     inputs.home-manager.flakeModules.home-manager
     inputs.devshell.flakeModule
+    inputs.flake-parts.flakeModules.bundlers
     ../packages
     ../dev-shells
     ../bundlers
