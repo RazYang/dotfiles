@@ -15,10 +15,10 @@
 - `home/`：homeModules 与 homeConfigurations（zsh/tmux/nix-index 等基础模块）
 - `nixos/`：nixosModules 与 nixosConfigurations（当前包含 playground 主机）
 - `darwin/`：占位目录，后续扩展 nix-darwin
-- `packages/`：自定义包（hello、nixvim、hello-oci 等）
-- `overlays/`：额外 overlay（如 zcf、infuse）
+- `packages/`：自定义包，按包名分目录（每个目录 `default.nix` 自动被 flake 导入）
 - `flake-modules/`：flake-parts 模块（`top-level.nix` 为入口，使用 `importSubfolders` 自动加载子模块，如 `treefmt/`）
-- `dev-shells/`：独立 mkShell（ctf/test），需手动通过路径调用
+- `dev-shells/`：独立 mkShell，按目录自动导出（`importSubfolders`）
+- `bundlers/`：应用打包器集合，按目录自动导出（`importSubfolders`），如 `bwrap/`、`DSBundler/`
 
 ## 快速开始
 1) 安装 Nix 并启用 flakes（nix.conf 中开启 `nix-command flakes pipe-operators`）。
@@ -38,4 +38,6 @@
 - 默认使用中科大/清华/交大镜像及 nix-community cachix，加快拉取速度。
 - Home 模块内置 zsh + tmux + nix-index/nix-index-database、Atuin、fzf、zoxide 等常用工具。
 - NixOS `playground` 示例启用了 impermanence、dae、samba、nginx/ACME（按需开启）、postgresql 等占位服务，可按需裁剪。
+- flake 内部通过 `importSubfolders` + 自定义 `callPackage` 作用域自动收集 `packages/` 子目录下的包（带 inputs/myLib 透传），新增包只需放到同名目录并提供 `default.nix`。
+- devshell/bundler 也同样通过 `importSubfolders` 自动导出：新增开发壳或打包器时放入对应目录（含 `default.nix`），无需额外注册。
 
