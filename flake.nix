@@ -49,30 +49,19 @@
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      {
-        inputs,
-        lib,
-        config,
-        ...
-      }:
-      let
-        flakeLib = (import ./lib { inherit lib; }).flake.lib;
-        flakeModules = ./flake-modules |> flakeLib.importSubfolders;
-      in
-      {
-        systems = import inputs.systems;
-        imports = [
-          inputs.home-manager.flakeModules.home-manager
-          ./lib
-          ./packages
-          ./home
-          ./nixos
-          ./darwin
-        ]
-        ++ (flakeModules |> builtins.attrValues);
-        flake.flakeModules = flakeModules;
-      }
-    );
+    inputs@{
+      flake-parts,
+      self,
+      ...
+    }:
+    let
+      systems = import inputs.systems;
+      mkFlake = flake-parts.lib.mkFlake {
+        inherit inputs;
+        specialArgs = { inherit systems; };
+      };
+      topModule = import ./flake-modules/top-level.nix;
+
+    in
+    mkFlake topModule;
 }

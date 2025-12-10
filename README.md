@@ -17,7 +17,7 @@
 - `darwin/`：占位目录，后续扩展 nix-darwin
 - `packages/`：自定义包（hello、nixvim、hello-oci 等）
 - `overlays/`：额外 overlay（如 zcf、infuse）
-- `flake-modules/`：flake-parts 模块
+- `flake-modules/`：flake-parts 模块（`top-level.nix` 为入口，使用 `importSubfolders` 自动加载子模块，如 `treefmt/`）
 - `dev-shells/`：独立 mkShell（ctf/test），需手动通过路径调用
 
 ## 快速开始

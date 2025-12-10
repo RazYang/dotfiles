@@ -32,7 +32,7 @@
 - RFC 0148 提议在 Nix 语言内置 `|>`，语义为反转实参顺序的函数应用：`f a` 等价于 `a |> f`；左结合、弱于函数应用。
 - 现状：可用 `lib.pipe a [f g h]` 作为等价替代，`|>` 将提升可读性与可发现性，未来可能成为内建运算符并提升错误溯源体验。
 - 与 `lib.pipe` 的关系：`|>` 可视为展开版 `lib.pipe`，减少括号与列表包装；当 `|>` 可用时，可逐步从 `lib.pipe` 迁移。
-- **本项目优先使用`|>`运算符增加代码可读性**
+- **当调用函数嵌套>=3时，优先使用`|>`运算符增加代码可读性**
 - 参考：https://raw.githubusercontent.com/NixOS/rfcs/1026104d8fb8db751b5941cea45ba97f8fbfabb7/rfcs/0148-pipe-operator.md
 
 ### 包作用域与 callPackage/makeScope
