@@ -6,6 +6,9 @@
   ...
 }:
 {
+  imports = [
+    inputs.process-compose-flake.flakeModule
+  ];
   perSystem =
     {
       pkgs,
@@ -29,5 +32,11 @@
     in
     {
       apps = (lib.fix toFix).apps;
+      process-compose = {
+        test = {
+          settings.processes.hello.command = "sleep 1000";
+          settings.processes.world.command = "sleep 1000";
+        };
+      };
     };
 }
