@@ -3,6 +3,7 @@
   inputs,
   withSystem,
   self,
+  my-lib,
   ...
 }:
 let
@@ -30,7 +31,7 @@ let
     })
   );
 in
-self.lib.importSubfolders ./.
+my-lib.importSubfolders ./.
 |> mapNixosConfigurations
 |> lib.setAttrByPath [
   "flake"

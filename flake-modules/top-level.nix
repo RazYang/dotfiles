@@ -2,13 +2,17 @@
   inputs,
   lib,
   systems,
-  myLib,
+  my-lib,
   ...
 }:
-lib.fix (final: {
+let
+  flakeModules = my-lib.importSubfolders ./.;
+in
+{
   inherit systems;
   imports = [
     ../packages
+    ../services
     ../dev-shells
     ../bundlers
     ../apps
@@ -16,8 +20,6 @@ lib.fix (final: {
     ../nixos
     ../darwin
   ]
-  ++ (lib.attrValues final.flake.flakeModules);
-
-  flake.lib = myLib;
-  flake.flakeModules = myLib.importSubfolders ./.;
-})
+  ++ (flakeModules |> lib.attrValues);
+  flake.flakeModules = flakeModules;
+}

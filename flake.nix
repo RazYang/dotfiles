@@ -81,7 +81,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
 
-    #services-flake.url = "https://github.com/juspay/services-flake/archive/8b6244f.zip";
+    services-flake.url = "https://github.com/juspay/services-flake/archive/8b6244f.zip";
     process-compose-flake.url = "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip";
 
     devshell = {
@@ -91,21 +91,13 @@
   };
 
   outputs =
-    inputs@{
-      flake-parts,
-      self,
-      ...
-    }:
-    let
-      systems = import inputs.systems;
-      myLib = import ./lib { inherit (inputs.nixpkgs-lib) lib; };
-      infuse = (import inputs.infuse { inherit (inputs.nixpkgs-lib) lib; }).v1.infuse;
-      mkFlake = flake-parts.lib.mkFlake {
-        inherit inputs;
-        specialArgs = { inherit systems myLib infuse; };
+    inputs:
+    inputs.flake-parts.lib.mkFlake {
+      inherit inputs;
+      specialArgs = {
+        systems = import inputs.systems;
+        my-lib = import ./lib { lib = inputs.nixpkgs-lib.lib; };
+        infuse = (import inputs.infuse { lib = inputs.nixpkgs-lib.lib; }).v1.infuse;
       };
-      topModule = import ./flake-modules/top-level.nix;
-
-    in
-    mkFlake topModule;
+    } ./flake-modules/top-level.nix;
 }

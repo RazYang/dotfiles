@@ -1,7 +1,7 @@
 {
   lib,
   inputs,
-  myLib,
+  my-lib,
   ...
 }:
 {
@@ -9,6 +9,6 @@
     inputs.devshell.flakeModule
   ];
   perSystem = args: {
-    devshells = myLib.importSubfolders ./.;
+    devshells = my-lib.importSubfolders ./.;
   };
 }

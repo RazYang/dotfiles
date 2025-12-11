@@ -38,6 +38,6 @@
 - 默认使用中科大/清华/交大镜像及 nix-community cachix，加快拉取速度。
 - Home 模块内置 zsh + tmux + nix-index/nix-index-database、Atuin、fzf、zoxide 等常用工具。
 - NixOS `playground` 示例启用了 impermanence、dae、samba、nginx/ACME（按需开启）、postgresql 等占位服务，可按需裁剪。
-- flake 内部通过 `importSubfolders` + 自定义 `callPackage` 作用域自动收集 `packages/` 子目录下的包（带 inputs/myLib 透传），新增包只需放到同名目录并提供 `default.nix`。
+- flake 内部通过 `importSubfolders` + 自定义 `callPackage` 作用域自动收集 `packages/` 子目录下的包（带 inputs/my-lib 透传），新增包只需放到同名目录并提供 `default.nix`。
 - devshell/bundler 也同样通过 `importSubfolders` 自动导出：新增开发壳或打包器时放入对应目录（含 `default.nix`），无需额外注册。
 

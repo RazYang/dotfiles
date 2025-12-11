@@ -2,7 +2,7 @@
   lib,
   inputs,
   withSystem,
-  self,
+  my-lib,
   ...
 }:
 let
@@ -47,7 +47,7 @@ let
     }
   );
 in
-self.lib.importSubfolders ./.
+my-lib.importSubfolders ./.
 |> mapHomeConfigurations
 |> lib.setAttrByPath [
   "flake"

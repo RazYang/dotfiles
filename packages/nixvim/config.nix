@@ -2,9 +2,7 @@
 {
   viAlias = true;
   vimAlias = true;
-  clipboard.providers = {
-    xsel.enable = true;
-  };
+  # clipboard.providers = { xsel.enable = true; };
 
   ##############################
   ### keymaps
@@ -119,7 +117,7 @@
     ### treesitter
     ##############################
     treesitter = {
-      enable = true;
+      enable = false;
       nixGrammars = true;
       nixvimInjections = true;
       settings = {
@@ -149,7 +147,7 @@
       capabilities = "require('cmp_nvim_lsp').default_capabilities()";
       inlayHints = true;
       servers = {
-        bashls.enable = true;
+        bashls.enable = false;
         nil_ls.enable = true;
         ruff.enable = false;
         basedpyright = {

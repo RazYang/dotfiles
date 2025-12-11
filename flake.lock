@@ -304,8 +304,21 @@
         "nixpkgs-lib": "nixpkgs-lib",
         "nixvim": "nixvim",
         "process-compose-flake": "process-compose-flake",
+        "services-flake": "services-flake",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "services-flake": {
+      "locked": {
+        "lastModified": 1765168239,
+        "narHash": "sha256-NZ7H4lbbytPNwe4ZyvovycuS1BMBFwJrptgX7NiF+F0=",
+        "type": "tarball",
+        "url": "https://github.com/juspay/services-flake/archive/8b6244f.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/juspay/services-flake/archive/8b6244f.zip"
       }
     },
     "systems": {

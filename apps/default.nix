@@ -1,14 +1,11 @@
 {
   lib,
-  myLib,
+  my-lib,
   inputs,
   infuse,
   ...
 }:
 {
-  imports = [
-    inputs.process-compose-flake.flakeModule
-  ];
   perSystem =
     {
       pkgs,
@@ -27,16 +24,10 @@
             }
           ]) appFn args
           |> lib.filterAttrs (n: _: n != "override" && n != "overrideDerivation");
-        apps = (myLib.importSubfolders ./. |> lib.mapAttrs (_: appFn: self.callApp appFn { }));
+        apps = (my-lib.importSubfolders ./. |> lib.mapAttrs (_: appFn: self.callApp appFn { }));
       };
     in
     {
       apps = (lib.fix toFix).apps;
-      process-compose = {
-        test = {
-          settings.processes.hello.command = "sleep 1000";
-          settings.processes.world.command = "sleep 1000";
-        };
-      };
     };
 }

@@ -2,7 +2,7 @@
   lib,
   inputs,
   infuse,
-  myLib,
+  my-lib,
   ...
 }:
 {
@@ -27,7 +27,7 @@
             }
           ]
         );
-        packages = myLib.importSubfolders ./. |> lib.mapAttrs (_: pkgFn: self.callPackage pkgFn { });
+        packages = my-lib.importSubfolders ./. |> lib.mapAttrs (_: pkgFn: self.callPackage pkgFn { });
       };
     in
     {
