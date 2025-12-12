@@ -1,6 +1,4 @@
 {
-  description = "RazYang's Nix Flake Configurations";
-
   nixConfig = {
     extra-substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
@@ -25,12 +23,14 @@
     };
 
     systems = {
-      url = "path:./systems.nix";
+      url = "path:./.inputs.local.d/systems.nix";
       flake = false;
     };
 
     nixpkgs.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
-    nixpkgs-lib.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
+    nixpkgs-lib.follows = "nixpkgs";
+    import-tree.url = "https://github.com/vic/import-tree/archive/3c23749.zip";
+
     impermanence.url = "https://github.com/nix-community/impermanence/archive/4b3e914.zip";
 
     flake-utils = {
@@ -76,11 +76,6 @@
       };
     };
 
-    flake-parts = {
-      url = "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip";
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
-    };
-
     services-flake.url = "https://github.com/juspay/services-flake/archive/8b6244f.zip";
     process-compose-flake.url = "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip";
 
@@ -88,16 +83,12 @@
       url = "https://github.com/numtide/devshell/archive/17ed8d9.zip";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts = {
+      url = "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip";
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+    };
   };
 
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake {
-      inherit inputs;
-      specialArgs = {
-        systems = import inputs.systems;
-        my-lib = import ./lib { lib = inputs.nixpkgs-lib.lib; };
-        infuse = (import inputs.infuse { lib = inputs.nixpkgs-lib.lib; }).v1.infuse;
-      };
-    } ./flake-modules/top-level.nix;
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ./parts.nix;
 }

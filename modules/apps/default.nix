@@ -1,10 +1,12 @@
 {
   lib,
-  my-lib,
   inputs,
-  infuse,
+  config,
   ...
 }:
+let
+  inherit (config.flake.lib) importSubfolders infuse;
+in
 {
   perSystem =
     {
@@ -24,7 +26,7 @@
             }
           ]) appFn args
           |> lib.filterAttrs (n: _: n != "override" && n != "overrideDerivation");
-        apps = (my-lib.importSubfolders ./. |> lib.mapAttrs (_: appFn: self.callApp appFn { }));
+        apps = (importSubfolders ./. |> lib.mapAttrs (_: appFn: self.callApp appFn { }));
       };
     in
     {

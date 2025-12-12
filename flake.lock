@@ -98,6 +98,18 @@
         "url": "https://github.com/nix-community/impermanence/archive/4b3e914.zip"
       }
     },
+    "import-tree": {
+      "locked": {
+        "lastModified": 1763762820,
+        "narHash": "sha256-ZvYKbFib3AEwiNMLsejb/CWs/OL/srFQ8AogkebEPF0=",
+        "type": "tarball",
+        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
+      }
+    },
     "infuse": {
       "flake": false,
       "locked": {
@@ -213,23 +225,6 @@
         "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
       }
     },
-    "nixpkgs-lib": {
-      "locked": {
-        "lastModified": 1764522689,
-        "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
-        "ref": "nixos-25.11",
-        "rev": "8bb5646e0bed5dbd3ab08c7a7cc15b75ab4e1d0f",
-        "shallow": true,
-        "type": "git",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
-      },
-      "original": {
-        "ref": "nixos-25.11",
-        "shallow": true,
-        "type": "git",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
-      }
-    },
     "nixvim": {
       "inputs": {
         "flake-parts": [
@@ -296,12 +291,15 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
+        "import-tree": "import-tree",
         "infuse": "infuse",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-lib": "nixpkgs-lib",
+        "nixpkgs-lib": [
+          "nixpkgs"
+        ],
         "nixvim": "nixvim",
         "process-compose-flake": "process-compose-flake",
         "services-flake": "services-flake",
@@ -339,11 +337,11 @@
     "systems_2": {
       "flake": false,
       "locked": {
-        "path": "./systems.nix",
+        "path": "./.inputs.local.d/systems.nix",
         "type": "path"
       },
       "original": {
-        "path": "./systems.nix",
+        "path": "./.inputs.local.d/systems.nix",
         "type": "path"
       },
       "parent": []

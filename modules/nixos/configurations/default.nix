@@ -3,7 +3,7 @@
   inputs,
   withSystem,
   self,
-  my-lib,
+  config,
   ...
 }:
 let
@@ -31,7 +31,7 @@ let
     })
   );
 in
-my-lib.importSubfolders ./.
+config.flake.lib.importSubfolders ./.
 |> mapNixosConfigurations
 |> lib.setAttrByPath [
   "flake"

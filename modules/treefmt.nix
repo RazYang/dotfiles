@@ -1,4 +1,4 @@
-{ inputs, withSystem, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.treefmt-nix.flakeModule

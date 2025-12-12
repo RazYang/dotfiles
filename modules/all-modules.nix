@@ -1,0 +1,14 @@
+[
+  ./lib
+  ./systems.nix
+  ./treefmt.nix
+  ./nixpkgs.nix
+  ./packages
+  ./devshells
+  ./bundlers
+  ./apps
+  ./services
+  ./home
+  ./nixos
+  ./darwin
+]

@@ -2,7 +2,7 @@
   lib,
   inputs,
   infuse,
-  my-lib,
+  config,
   ...
 }:
 {
@@ -27,7 +27,8 @@
             }
           ]
         );
-        packages = my-lib.importSubfolders ./. |> lib.mapAttrs (_: pkgFn: self.callPackage pkgFn { });
+        packages =
+          config.flake.lib.importSubfolders ./. |> lib.mapAttrs (_: pkgFn: self.callPackage pkgFn { });
       };
     in
     {

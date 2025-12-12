@@ -1,10 +1,12 @@
 {
   lib,
-  my-lib,
+  config,
   inputs,
-  infuse,
   ...
 }:
+let
+  inherit (config.flake.lib) importSubfolders infuse;
+in
 {
   perSystem =
     {
@@ -24,7 +26,7 @@
             }
           ]
         );
-        packages = (my-lib.importSubfolders ./. |> lib.mapAttrs (_: pkgFn: self.callPackage pkgFn { }));
+        packages = (importSubfolders ./. |> lib.mapAttrs (_: pkgFn: self.callPackage pkgFn { }));
       };
     in
     {
