@@ -17,18 +17,6 @@
         "url": "https://github.com/numtide/devshell/archive/17ed8d9.zip"
       }
     },
-    "flake-file": {
-      "locked": {
-        "lastModified": 1763763269,
-        "narHash": "sha256-i49Qkjy5TD5IPOp7lcqD5Bh47+FCFnJHNfn/Di/ysYU=",
-        "type": "tarball",
-        "url": "https://github.com/vic/flake-file/archive/af92ed3.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/vic/flake-file/archive/af92ed3.zip"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -250,7 +238,6 @@
     "root": {
       "inputs": {
         "devshell": "devshell",
-        "flake-file": "flake-file",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

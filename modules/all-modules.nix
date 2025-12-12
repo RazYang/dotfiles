@@ -1,6 +1,5 @@
 [
   ./nix.nix
-  ./inputs.nix
   ./lib
   ./systems.nix
   ./treefmt.nix

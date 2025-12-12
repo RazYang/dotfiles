@@ -25,9 +25,4 @@
           services.redis.rd.enable = true;
         };
     };
-
-  flake-file.inputs = {
-    services-flake.url = "https://github.com/juspay/services-flake/archive/8b6244f.zip";
-    process-compose-flake.url = "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip";
-  };
 }

@@ -24,8 +24,4 @@ in
       };
     };
   };
-
-  config = {
-    flake-file.nixConfig = cfg.settings;
-  };
 }

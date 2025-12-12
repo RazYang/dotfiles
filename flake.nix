@@ -1,7 +1,4 @@
-# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
-# Use `nix run .#write-flake` to regenerate it.
 {
-
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ./parts.nix;
 
   nixConfig = {
@@ -26,7 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "https://github.com/numtide/devshell/archive/17ed8d9.zip";
     };
-    flake-file.url = "https://github.com/vic/flake-file/archive/af92ed3.zip";
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip";
