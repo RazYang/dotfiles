@@ -17,6 +17,18 @@
         "url": "https://github.com/numtide/devshell/archive/17ed8d9.zip"
       }
     },
+    "flake-file": {
+      "locked": {
+        "lastModified": 1763763269,
+        "narHash": "sha256-i49Qkjy5TD5IPOp7lcqD5Bh47+FCFnJHNfn/Di/ysYU=",
+        "type": "tarball",
+        "url": "https://github.com/vic/flake-file/archive/af92ed3.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/vic/flake-file/archive/af92ed3.zip"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -35,23 +47,6 @@
       }
     },
     "flake-utils": {
-      "inputs": {
-        "systems": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "type": "tarball",
-        "url": "https://github.com/numtide/flake-utils/archive/11707dc.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/numtide/flake-utils/archive/11707dc.zip"
-      }
-    },
-    "flake-utils_2": {
       "inputs": {
         "systems": "systems"
       },
@@ -96,18 +91,6 @@
       "original": {
         "type": "tarball",
         "url": "https://github.com/nix-community/impermanence/archive/4b3e914.zip"
-      }
-    },
-    "import-tree": {
-      "locked": {
-        "lastModified": 1763762820,
-        "narHash": "sha256-ZvYKbFib3AEwiNMLsejb/CWs/OL/srFQ8AogkebEPF0=",
-        "type": "tarball",
-        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
       }
     },
     "infuse": {
@@ -188,26 +171,6 @@
         "url": "https://github.com/nix-community/nix-index-database/archive/4194c58.zip"
       }
     },
-    "nixos-generators": {
-      "inputs": {
-        "nixlib": [
-          "nixpkgs-lib"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1764234087,
-        "narHash": "sha256-NHF7QWa0ZPT8hsJrvijREW3+nifmF2rTXgS2v0tpcEA=",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/nixos-generators/archive/032a187.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/nix-community/nixos-generators/archive/032a187.zip"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1764983851,
@@ -251,7 +214,7 @@
     },
     "nuschtosSearch": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "ixx": "ixx",
         "nixpkgs": [
           "nixvim",
@@ -287,15 +250,13 @@
     "root": {
       "inputs": {
         "devshell": "devshell",
+        "flake-file": "flake-file",
         "flake-parts": "flake-parts",
-        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
-        "import-tree": "import-tree",
         "infuse": "infuse",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
-        "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
         "nixpkgs-lib": [
           "nixpkgs"
@@ -335,16 +296,16 @@
       }
     },
     "systems_2": {
-      "flake": false,
       "locked": {
-        "path": "./.inputs.local.d/systems.nix",
-        "type": "path"
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "type": "tarball",
+        "url": "https://github.com/nix-systems/default/archive/da67096.zip"
       },
       "original": {
-        "path": "./.inputs.local.d/systems.nix",
-        "type": "path"
-      },
-      "parent": []
+        "type": "tarball",
+        "url": "https://github.com/nix-systems/default/archive/da67096.zip"
+      }
     },
     "treefmt-nix": {
       "inputs": {
