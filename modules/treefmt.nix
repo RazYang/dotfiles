@@ -14,4 +14,9 @@
         };
       };
     };
+
+  flake-file.inputs.treefmt-nix = {
+    url = "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 }
