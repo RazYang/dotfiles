@@ -32,6 +32,11 @@
       withSystem value.system (
         { pkgs, ... }:
         lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            inherit (config.flake.modules) users;
+          };
+
           inherit (value) modules;
           inherit pkgs;
         }

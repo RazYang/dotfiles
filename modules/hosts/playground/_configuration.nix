@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  users,
+  ...
+}:
 {
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -109,15 +114,9 @@
 
   users.users.root.initialHashedPassword = "$y$j9T$.BxY4vIjQZapjGvpFvNJy1$u.Z.DuX4/z8hk81K8otcOILeECVx53IqRMlcKj/ek87";
   home-manager.extraSpecialArgs.inputs = inputs;
-  home-manager.users.root =
-    { inputs, ... }:
-    {
-      imports =
-        (inputs.self.homeConfigurations."root@playground".mkModules {
-          username = "root";
-          inherit inputs;
-        }).modules;
-    };
+  home-manager.users.root = {
+    imports = users.root.modules;
+  };
   environment.persistence."/nix/persistent" = {
     hideMounts = true;
     directories = [
