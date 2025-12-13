@@ -8,6 +8,7 @@
   flake.modules.hosts.playground = {
     system = "x86_64-linux";
     modules = [
+      config.flake.modules.nixos.base
       inputs.home-manager.nixosModules.home-manager
       inputs.impermanence.nixosModules.impermanence
       ./_configuration.nix
