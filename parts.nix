@@ -6,9 +6,9 @@
     ./devshells
     ./bundlers
     ./services
-    ./nixos
     ./darwin
     ./packages
+    #./nixos
     (inputs.import-tree ./modules)
   ];
 }
