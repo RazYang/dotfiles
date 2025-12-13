@@ -1,4 +1,13 @@
 { inputs, self, ... }:
 {
-  imports = import ./modules/all-modules.nix;
+  imports = [
+    ./devshells
+    ./bundlers
+    ./apps
+    ./services
+    ./packages
+    ./nixos
+    ./darwin
+    (inputs.import-tree ./modules)
+  ];
 }

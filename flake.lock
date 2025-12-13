@@ -81,6 +81,18 @@
         "url": "https://github.com/nix-community/impermanence/archive/4b3e914.zip"
       }
     },
+    "import-tree": {
+      "locked": {
+        "lastModified": 1763762820,
+        "narHash": "sha256-ZvYKbFib3AEwiNMLsejb/CWs/OL/srFQ8AogkebEPF0=",
+        "type": "tarball",
+        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
+      }
+    },
     "infuse": {
       "flake": false,
       "locked": {
@@ -241,6 +253,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
+        "import-tree": "import-tree",
         "infuse": "infuse",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",

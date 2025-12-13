@@ -62,6 +62,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip";
     };
+    import-tree.url = "https://github.com/vic/import-tree/archive/3c23749.zip";
   };
 
 }
