@@ -12,7 +12,6 @@
       })
       |> builtins.listToAttrs;
 
-    infuse = (import inputs.infuse { inherit lib; }).v1.infuse;
   };
 
 }

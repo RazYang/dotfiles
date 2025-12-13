@@ -5,13 +5,13 @@
   ...
 }:
 {
-  config.flake.homeConfigurations.yang = withSystem "aarch64-darwin" (
-    { pkgs, ... }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        config.flake.modules.home.base
-        ({
+  flake.modules.users.yang = {
+    system = "aarch64-darwin";
+    modules = [
+      config.flake.modules.home.base
+      (
+        { pkgs, ... }:
+        {
           home = {
             username = "yang";
             homeDirectory = "/Users/yang";
@@ -23,8 +23,8 @@
             ];
           };
           programs.home-manager.enable = true;
-        })
-      ];
-    }
-  );
+        }
+      )
+    ];
+  };
 }

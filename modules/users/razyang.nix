@@ -5,13 +5,13 @@
   ...
 }:
 {
-  config.flake.homeConfigurations.razyang = withSystem "x86_64-linux" (
-    { pkgs, ... }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        config.flake.modules.home.base
-        ({
+  flake.modules.users.razyang = {
+    system = "x86_64-linux";
+    modules = [
+      config.flake.modules.home.base
+      (
+        { pkgs, ... }:
+        {
           home = {
             username = "razyang";
             homeDirectory = "/home/razyang";
@@ -25,8 +25,8 @@
             ];
           };
           programs.home-manager.enable = true;
-        })
-      ];
-    }
-  );
+        }
+      )
+    ];
+  };
 }

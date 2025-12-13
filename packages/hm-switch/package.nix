@@ -1,10 +1,14 @@
-{ pkgs, inputs }:
+{
+  writeShellScriptBin,
+  inputs,
+  inputs',
+  ...
+}:
 let
-  system = pkgs.stdenv.hostPlatform.system;
-  homeManager = inputs.home-manager.packages.${system}.home-manager;
+  homeManager = inputs'.home-manager.packages.home-manager;
   hmBin = "${homeManager}/bin/home-manager";
 in
-pkgs.writeShellScriptBin "hm-switch" ''
+writeShellScriptBin "hm-switch" ''
   if [ "$#" -gt 0 ]; then
     exec ${hmBin} switch --flake "${inputs.self}#''${@}"
   else
