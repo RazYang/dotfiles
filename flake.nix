@@ -1,5 +1,6 @@
 {
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ./parts.nix;
+  outputs =
+    inputs: (inputs.flake-parts.lib.evalFlakeModule { inherit inputs; } ./parts.nix).config.flake;
 
   nixConfig = {
     experimental-features = [

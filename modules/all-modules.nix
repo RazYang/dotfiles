@@ -1,4 +1,7 @@
 [
+  ./users
+  ./i18n
+  ./cli
   ./nix.nix
   ./lib
   ./systems.nix
@@ -9,7 +12,7 @@
   ./bundlers
   ./apps
   ./services
-  ./home
-  ./nixos
-  ./darwin
+  #./home
+  #./nixos
+  #./darwin
 ]
