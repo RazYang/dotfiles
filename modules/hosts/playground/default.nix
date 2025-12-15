@@ -6,6 +6,7 @@
 }:
 {
   flake.modules.hosts.playground = {
+    type = "nixos";
     system = "x86_64-linux";
     modules = [
       config.flake.modules.nixos.base
