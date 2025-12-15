@@ -5,15 +5,9 @@
   ...
 }:
 {
-  imports = [
-    inputs.flake-parts.flakeModules.bundlers
-  ];
+  imports = [ inputs.flake-parts.flakeModules.bundlers ];
   perSystem =
-    {
-      pkgs,
-      config,
-      ...
-    }:
+    { pkgs, config, ... }:
     let
       toFix = self: {
         callPackage = lib.callPackageWith (

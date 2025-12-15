@@ -5,6 +5,4 @@
   hello-custom,
   ...
 }:
-infuse hello-custom {
-  __output.pname = _: "hello-infuse";
-}
+infuse hello-custom { __output.pname = _: "hello-infuse"; }

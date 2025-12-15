@@ -5,9 +5,7 @@
   ...
 }:
 {
-  imports = [
-    inputs.devshell.flakeModule
-  ];
+  imports = [ inputs.devshell.flakeModule ];
   perSystem =
     { config, ... }:
     {

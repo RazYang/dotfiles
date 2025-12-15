@@ -11,9 +11,7 @@
         keyMode = "vi";
         prefix = "C-q";
         terminal = "screen-256color";
-        plugins = with pkgs.tmuxPlugins; [
-          gruvbox
-        ];
+        plugins = with pkgs.tmuxPlugins; [ gruvbox ];
         extraConfig = ''
           unbind '"'
           unbind %

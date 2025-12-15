@@ -17,22 +17,14 @@
                 "darwin"
               ];
             };
-            system = lib.mkOption {
-              type = lib.types.enum (import inputs.systems);
-            };
-            modules = lib.mkOption {
-              type = lib.types.listOf lib.types.deferredModule;
-            };
+            system = lib.mkOption { type = lib.types.enum (import inputs.systems); };
+            modules = lib.mkOption { type = lib.types.listOf lib.types.deferredModule; };
           };
         }
       );
     };
-    nixos = lib.mkOption {
-      type = lib.types.lazyAttrsOf lib.types.deferredModule;
-    };
-    darwin = lib.mkOption {
-      type = lib.types.lazyAttrsOf lib.types.deferredModule;
-    };
+    nixos = lib.mkOption { type = lib.types.lazyAttrsOf lib.types.deferredModule; };
+    darwin = lib.mkOption { type = lib.types.lazyAttrsOf lib.types.deferredModule; };
   };
 
   config = {

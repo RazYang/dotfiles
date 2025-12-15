@@ -7,11 +7,7 @@
 }:
 {
   perSystem =
-    {
-      pkgs,
-      config,
-      ...
-    }:
+    { pkgs, config, ... }:
     let
       toFix = self: {
         callPackage =
