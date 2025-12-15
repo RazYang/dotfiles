@@ -61,7 +61,7 @@
         _: value:
         withSystem value.system (
           { pkgs, ... }:
-          lib.darwinSystem {
+          inputs.nix-darwin.lib.darwinSystem {
             specialArgs = {
               inherit inputs;
               inherit (config.flake.modules) users;
