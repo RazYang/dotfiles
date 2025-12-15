@@ -2,7 +2,6 @@
   lib,
   inputs,
   infuse,
-  config,
   ...
 }:
 {
@@ -27,8 +26,15 @@
             }
           ]
         );
-        packages =
-          config.flake.lib.importSubfolders ./. |> lib.mapAttrs (_: pkgFn: self.callPackage pkgFn { });
+        packages = (
+          lib.fileset.fileFilter ({ name, ... }: name == "bundler.nix") ./.
+          |> lib.fileset.toList
+          |> lib.map (path: {
+            name = builtins.dirOf path |> builtins.baseNameOf;
+            value = self.callPackage (import path) { };
+          })
+          |> lib.listToAttrs
+        );
       };
     in
     {
