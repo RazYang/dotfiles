@@ -14,7 +14,7 @@ in
       { pkgs, ... }:
       {
         nix = {
-          #package = pkgs.nixVersions.latest;
+          package = lib.mkDefault pkgs.nixVersions.latest;
           keepOldNixPath = false;
           nixPath = inputs |> lib.mapAttrs (name: flake: "${name}=${flake}") |> lib.attrValues;
           registry = inputs |> lib.mapAttrs (name: flake: { inherit flake; });
