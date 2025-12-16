@@ -139,24 +139,11 @@
     ];
   };
 
-  #nixpkgs.hostPlatform = {
-  #  system = "x86_64-linux";
-  #  gcc.arch = "znver2";
-  #  gcc.tune = "znver2";
-  #};
-
   environment.enableAllTerminfo = true;
   environment.systemPackages = with pkgs; [
     linux-manual
     man-pages
     man-pages-posix
-  ];
-  nix.settings.system-features = [
-    "benchmark"
-    "big-parallel"
-    "kvm"
-    "nixos-test"
-    "gccarch-znver2"
   ];
   system.stateVersion = "24.05";
 }

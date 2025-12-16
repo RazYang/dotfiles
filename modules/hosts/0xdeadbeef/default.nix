@@ -9,7 +9,7 @@
     type = "darwin";
     system = "aarch64-darwin";
     modules = [
-      inputs.home-manager.darwinModules.home-manager
+      config.flake.modules.darwin.base
       ./_configuration.nix
     ];
   };

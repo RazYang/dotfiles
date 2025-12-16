@@ -26,13 +26,26 @@
     flake.homeConfigurations = lib.flip lib.mapAttrs config.flake.modules.users (
       _: value:
       withSystem value.system (
-        { pkgs, ... }:
+        { pkgs, system, ... }:
         inputs.home-manager.lib.homeManagerConfiguration {
-          inherit (value) modules;
           inherit pkgs;
+          inherit (value) modules;
+          extraSpecialArgs = { };
         }
       )
     );
+    flake.modules.nixos.base =
+      { ... }:
+      {
+        imports = [ inputs.home-manager.nixosModules.home-manager ];
+        home-manager.extraSpecialArgs.inputs = inputs;
+      };
+    flake.modules.darwin.base =
+      { ... }:
+      {
+        imports = [ inputs.home-manager.darwinModules.home-manager ];
+        home-manager.extraSpecialArgs.inputs = inputs;
+      };
   };
 
 }

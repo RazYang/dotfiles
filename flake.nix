@@ -63,6 +63,13 @@
       url = "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip";
     };
     import-tree.url = "https://github.com/vic/import-tree/archive/3c23749.zip";
+    detsys-nix = {
+      url = "https://github.com/DeterminateSystems/nix-src/archive/refs/tags/v3.14.0.zip";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 
 }
