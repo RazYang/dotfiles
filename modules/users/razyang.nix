@@ -24,7 +24,12 @@
               urlencode
             ];
           };
-          programs.home-manager.enable = true;
+          programs = {
+            direnv = {
+              enable = true;
+              enableZshIntegration = true;
+            };
+          };
         }
       )
     ];

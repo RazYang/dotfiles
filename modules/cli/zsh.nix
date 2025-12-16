@@ -3,11 +3,6 @@
     { pkgs, ... }:
     {
       programs = {
-        git.settings.user = {
-          name = "RazYang";
-          email = "xzzorz@gmail.com";
-        };
-
         zoxide = {
           enable = true;
           enableZshIntegration = true;
@@ -16,18 +11,7 @@
           enable = true;
           enableZshIntegration = true;
         };
-
-        ripgrep.enable = true;
-        broot.enable = true;
-        bottom.enable = true;
-        lsd = {
-          enable = true;
-          enableZshIntegration = true;
-        };
-        direnv = {
-          enable = true;
-          enableZshIntegration = true;
-        };
+        lsd.enable = true;
         atuin = {
           enable = true;
           settings = {
