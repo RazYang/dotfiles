@@ -17,7 +17,7 @@
 - `services/`：[process-compose-flake](https://github.com/Platonic-Systems/process-compose-flake)服务
 - `packages/`：自定义包，按包名分目录，自动导入每个目录下的`package.nix`文件，具有交叉编译支持
 - `devshells/`：[numtide/devshell](https://github.com/numtide/devshell)develop环境定义独立，自动导入每个子目录下的`devshell.nix`
-- `bundlers/`：应用打包器集合，自动导入每个子目录西的`bundler.nix`
+- `bundlers/`：应用打包器集合，自动导入每个子目录下的`bundler.nix`
 
 ## 快速开始
 1) 安装 Nix 并启用 flakes（nix.conf 中开启 `nix-command flakes pipe-operators`）。
