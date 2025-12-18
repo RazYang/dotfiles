@@ -4,8 +4,11 @@
   withSystem,
   ...
 }:
+let
+  username = "yang";
+in
 {
-  flake.modules.users.yang = {
+  flake.modules.users."${username}" = {
     system = "aarch64-darwin";
     modules = [
       config.flake.modules.home.base
@@ -13,8 +16,8 @@
         { pkgs, ... }:
         {
           home = {
-            username = "yang";
-            homeDirectory = "/Users/yang";
+            inherit username;
+            homeDirectory = "/Users/${username}";
             stateVersion = "24.05";
             packages = with pkgs; [
               nixfmt-rfc-style
@@ -22,7 +25,6 @@
               nix-tree
             ];
           };
-          programs.home-manager.enable = true;
         }
       )
     ];

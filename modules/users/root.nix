@@ -4,8 +4,11 @@
   withSystem,
   ...
 }:
+let
+  username = "root";
+in
 {
-  flake.modules.users.root = {
+  flake.modules.users."${username}" = {
     system = "x86_64-linux";
     modules = [
       config.flake.modules.home.base
@@ -13,8 +16,8 @@
         { pkgs, ... }:
         {
           home = {
-            username = "root";
-            homeDirectory = "/root";
+            inherit username;
+            homeDirectory = "/${username}";
             stateVersion = "24.05";
             packages = with pkgs; [
               nixfmt-rfc-style
@@ -26,7 +29,6 @@
               urlencode
             ];
           };
-          programs.home-manager.enable = true;
         }
       )
     ];
