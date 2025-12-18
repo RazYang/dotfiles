@@ -56,6 +56,19 @@
         "type": "github"
       }
     },
+    "flake-compat_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765121682,
+        "narHash": "sha256-4VBOP18BFeiPkyhy9o4ssBNQEvfvv1kXkasAYd0+rrA=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/flake-compat/archive/65f2313.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/NixOS/flake-compat/archive/65f2313.zip"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -346,6 +359,7 @@
       "inputs": {
         "detsys-nix": "detsys-nix",
         "devshell": "devshell",
+        "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

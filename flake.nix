@@ -70,6 +70,10 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    flake-compat = {
+      url = "https://github.com/NixOS/flake-compat/archive/65f2313.zip";
+      flake = false;
+    };
   };
 
 }
