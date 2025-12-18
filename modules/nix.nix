@@ -20,9 +20,9 @@ in
       { pkgs, ... }:
       {
         nix = commonNixConfig // {
-          keepOldNixPath = false;
           package = lib.mkDefault (nixPackage pkgs);
           settings.auto-optimise-store = true;
+          keepOldNixPath = false;
         };
         home.packages = [ (nixPackage pkgs) ];
       };
