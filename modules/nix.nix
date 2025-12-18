@@ -10,23 +10,7 @@ let
   commonNixConfig = {
     nixPath = inputs |> lib.mapAttrs (name: flake: "${name}=${flake}") |> lib.attrValues;
     registry = inputs |> lib.mapAttrs (name: flake: { inherit flake; });
-    settings = {
-      extra-substituters = [
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-        "https://mirrors.ustc.edu.cn/nix-channels/store"
-        "https://mirror.sjtu.edu.cn/nix-channels/store"
-        "https://nix-community.cachix.org"
-      ];
-      extra-trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-      experimental-features = [
-        "flakes"
-        "nix-command"
-        "pipe-operators"
-      ];
-      auto-optimise-store = true;
-    };
+    settings = (import (inputs.self + "/flake.nix").nixConfig) |> lib.traceVal;
   };
 
 in
@@ -38,6 +22,7 @@ in
         nix = commonNixConfig // {
           keepOldNixPath = false;
           package = lib.mkDefault (nixPackage pkgs);
+          settings.auto-optimise-store = true;
         };
         home.packages = [ (nixPackage pkgs) ];
       };
@@ -46,13 +31,16 @@ in
       {
         nix = commonNixConfig // {
           package = lib.mkForce (nixPackage pkgs);
+          optimise.automatic = true;
         };
       };
     flake.modules.darwin.base =
       { pkgs, ... }:
       {
-        nix = commonNixConfig // { };
-        package = lib.mkForce (nixPackage pkgs);
+        nix = commonNixConfig // {
+          package = lib.mkForce (nixPackage pkgs);
+          optimise.automatic = true;
+        };
       };
   };
 }
