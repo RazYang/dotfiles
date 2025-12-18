@@ -8,9 +8,9 @@ let
   cfg = config.flake.modules.nix;
   nixPackage = pkgs: inputs.detsys-nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
   commonNixConfig = {
-    nixPath = inputs |> lib.mapAttrs (name: flake: "${name}=${flake}") |> lib.attrValues;
+    settings = (import (inputs.self + "/flake.nix").nixConfig);
     registry = inputs |> lib.mapAttrs (name: flake: { inherit flake; });
-    settings = (import (inputs.self + "/flake.nix").nixConfig) |> lib.traceVal;
+    nixPath = inputs |> lib.mapAttrs (name: flake: "${name}=${flake}") |> lib.attrValues;
   };
 
 in
