@@ -1,9 +1,24 @@
 {
+  lib,
   pkgs,
+  config,
   inputs,
   users,
   ...
 }:
+let
+  zfsCompatibleKernelPackages = lib.filterAttrs (
+    name: kernelPackages:
+    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+    && (builtins.tryEval kernelPackages).success
+    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+  ) pkgs.linuxKernel.packages;
+  latestKernelPackage = lib.last (
+    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      builtins.attrValues zfsCompatibleKernelPackages
+    )
+  );
+in
 {
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -24,7 +39,8 @@
     devSize = "100%";
     runSize = "100%";
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems.zfs = true;
+    kernelPackages = latestKernelPackage;
     kernelModules = [ "tcp_bbr" ];
     kernel.sysctl = {
       "net.ipv4.tcp_congestion_control" = "bbr";
@@ -110,6 +126,7 @@
   networking = {
     hostName = "playground";
     useDHCP = true;
+    hostId = "e8688857";
   };
 
   users.users.root.initialHashedPassword = "$y$j9T$.BxY4vIjQZapjGvpFvNJy1$u.Z.DuX4/z8hk81K8otcOILeECVx53IqRMlcKj/ek87";
