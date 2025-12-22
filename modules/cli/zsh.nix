@@ -3,14 +3,13 @@
     { pkgs, ... }:
     {
       programs = {
-        zoxide = {
+        starship = {
           enable = true;
-          enableZshIntegration = true;
+          enableZshIntegration = false;
         };
-        fzf = {
-          enable = true;
-          enableZshIntegration = true;
-        };
+
+        zoxide.enable = true;
+        fzf.enable = true;
         lsd.enable = true;
         atuin = {
           enable = true;

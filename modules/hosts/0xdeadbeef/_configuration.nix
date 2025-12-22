@@ -35,9 +35,7 @@ in
     imhex
   ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.iosevka
-  ];
+  fonts.packages = with pkgs; [ nerd-fonts.iosevka ];
 
   system.defaults = {
     CustomUserPreferences = {
