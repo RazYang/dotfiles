@@ -36,10 +36,7 @@ in
     imhex
   ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.iosevka-term
-    nerd-fonts.iosevka
-  ];
+  fonts.packages = with pkgs; [ nerd-fonts.iosevka ];
 
   system.defaults = {
     NSGlobalDomain = {
