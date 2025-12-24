@@ -12,6 +12,7 @@ in
   users.users."${primaryUser}".home = "/Users/${primaryUser}";
   home-manager.users.yang.imports = users."${primaryUser}".modules;
   services = {
+    yabai.enable = true;
     skhd.enable = true;
   };
 
@@ -36,27 +37,20 @@ in
   ];
 
   fonts.packages = with pkgs; [
+    nerd-fonts.iosevka-term
     nerd-fonts.iosevka
   ];
 
   system.defaults = {
-    CustomUserPreferences = {
-      "com.apple.Spotlight".MenuItemHidden = true;
-      "com.apple.desktopservices" = {
-        DSDontWriteNetworkStores = true;
-        DSDontWriteUSBStores = true;
-      };
-    };
     NSGlobalDomain = {
       AppleShowAllFiles = true;
       AppleShowScrollBars = "Automatic";
       NSAutomaticWindowAnimationsEnabled = false;
-      NSStatusItemSelectionPadding = 4;
-      NSStatusItemSpacing = 4;
+      NSStatusItemSelectionPadding = 1;
+      NSStatusItemSpacing = 1;
       "com.apple.keyboard.fnState" = false;
     };
     controlcenter.BatteryShowPercentage = true;
-    controlcenter.Sound = false;
     dock = {
       autohide = true;
       tilesize = 48;
