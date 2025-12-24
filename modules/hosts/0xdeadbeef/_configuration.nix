@@ -11,10 +11,6 @@ in
   nix.settings.trusted-users = [ primaryUser ];
   users.users."${primaryUser}".home = "/Users/${primaryUser}";
   home-manager.users.yang.imports = users."${primaryUser}".modules;
-  services = {
-    yabai.enable = true;
-    skhd.enable = true;
-  };
 
   environment.enableAllTerminfo = true;
   environment.systemPackages = with pkgs; [
@@ -39,12 +35,19 @@ in
   fonts.packages = with pkgs; [ nerd-fonts.iosevka ];
 
   system.defaults = {
+    CustomUserPreferences = {
+      "com.apple.Spotlight".MenuItemHidden = true;
+      "com.apple.desktopservices" = {
+        DSDontWriteNetworkStores = true;
+        DSDontWriteUSBStores = true;
+      };
+    };
     NSGlobalDomain = {
       AppleShowAllFiles = true;
       AppleShowScrollBars = "Automatic";
       NSAutomaticWindowAnimationsEnabled = false;
-      NSStatusItemSelectionPadding = 1;
-      NSStatusItemSpacing = 1;
+      NSStatusItemSelectionPadding = 4;
+      NSStatusItemSpacing = 4;
       "com.apple.keyboard.fnState" = false;
     };
     controlcenter.BatteryShowPercentage = true;
