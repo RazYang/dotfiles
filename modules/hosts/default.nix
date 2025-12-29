@@ -34,10 +34,15 @@
       |> lib.mapAttrs (
         _: value:
         withSystem value.system (
-          { pkgs, ... }:
+          {
+            pkgs,
+            self',
+            inputs',
+            ...
+          }:
           lib.nixosSystem {
             specialArgs = {
-              inherit inputs;
+              inherit inputs self' inputs';
               inherit (config.flake.modules) users;
             };
 

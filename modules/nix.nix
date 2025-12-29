@@ -6,7 +6,6 @@
 }:
 let
   cfg = config.flake.modules.nix;
-  nixPackage = pkgs: inputs.detsys-nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
   commonNixConfig = {
     settings = (import (inputs.self.outPath + "/flake.nix")).nixConfig;
     registry = inputs |> lib.mapAttrs (name: flake: { inherit flake; });
@@ -17,28 +16,28 @@ in
 {
   config = {
     flake.modules.home.base =
-      { pkgs, ... }:
+      { inputs', ... }:
       {
         nix = commonNixConfig // {
-          package = lib.mkDefault (nixPackage pkgs);
+          package = lib.mkDefault inputs'.detsys-nix.packages.nix;
           settings.auto-optimise-store = true;
           keepOldNixPath = false;
         };
-        home.packages = [ (nixPackage pkgs) ];
+        home.packages = [ inputs'.detsys-nix.packages.nix ];
       };
     flake.modules.nixos.base =
-      { pkgs, ... }:
+      { inputs', ... }:
       {
         nix = commonNixConfig // {
-          package = lib.mkForce (nixPackage pkgs);
+          package = lib.mkForce inputs'.detsys-nix.packages.nix;
           optimise.automatic = true;
         };
       };
     flake.modules.darwin.base =
-      { pkgs, ... }:
+      { inputs', ... }:
       {
         nix = commonNixConfig // {
-          package = lib.mkForce (nixPackage pkgs);
+          package = lib.mkForce inputs'.detsys-nix.packages.nix;
           optimise.automatic = true;
         };
       };
