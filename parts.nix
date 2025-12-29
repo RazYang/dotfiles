@@ -2,9 +2,8 @@
 {
   imports = [
     (inputs.import-tree ./modules)
+    ./overlays
     ./packages
-    ./bundlers
     ./devshells
-    ./services
   ];
 }
