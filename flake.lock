@@ -13,14 +13,14 @@
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
-        "lastModified": 1765252170,
-        "narHash": "sha256-p98D44tYJMgB5Qet5S8cTQFdffk/GmoaGkpQtZ3hqJU=",
+        "lastModified": 1766546676,
+        "narHash": "sha256-GsC52VFF9Gi2pgP/haQyPdQoF5Qe2myk1tsPcuJZI28=",
         "type": "tarball",
-        "url": "https://github.com/DeterminateSystems/nix-src/archive/refs/tags/v3.14.0.zip"
+        "url": "https://github.com/DeterminateSystems/nix-src/archive/refs/tags/v3.15.1.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/DeterminateSystems/nix-src/archive/refs/tags/v3.14.0.zip"
+        "url": "https://github.com/DeterminateSystems/nix-src/archive/refs/tags/v3.15.1.zip"
       }
     },
     "devshell": {
@@ -33,11 +33,11 @@
         "lastModified": 1764011051,
         "narHash": "sha256-M7SZyPZiqZUR/EiiBJnmyUbOi5oE/03tCeFrTiUZchI=",
         "type": "tarball",
-        "url": "https://github.com/numtide/devshell/archive/17ed8d9.zip"
+        "url": "https://github.com/numtide/devshell/archive/refs/heads/main.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/numtide/devshell/archive/17ed8d9.zip"
+        "url": "https://github.com/numtide/devshell/archive/refs/heads/main.zip"
       }
     },
     "flake-compat": {
@@ -59,14 +59,14 @@
     "flake-compat_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1765121682,
-        "narHash": "sha256-4VBOP18BFeiPkyhy9o4ssBNQEvfvv1kXkasAYd0+rrA=",
+        "lastModified": 1766929376,
+        "narHash": "sha256-Eyg78VjLzKNG2XkqLqylSvHGAwsP8gsvmUHtZxQwPq4=",
         "type": "tarball",
-        "url": "https://github.com/NixOS/flake-compat/archive/65f2313.zip"
+        "url": "https://github.com/NixOS/flake-compat/archive/refs/heads/master.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/NixOS/flake-compat/archive/65f2313.zip"
+        "url": "https://github.com/NixOS/flake-compat/archive/refs/heads/master.zip"
       }
     },
     "flake-parts": {
@@ -76,14 +76,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1763759067,
-        "narHash": "sha256-LlLt2Jo/gMNYAwOgdRQBrsRoOz7BPRkzvNaI/fzXi2Q=",
+        "lastModified": 1765835352,
+        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
         "type": "tarball",
-        "url": "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip"
+        "url": "https://github.com/hercules-ci/flake-parts/archive/refs/heads/main.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip"
+        "url": "https://github.com/hercules-ci/flake-parts/archive/refs/heads/main.zip"
       }
     },
     "flake-utils": {
@@ -135,14 +135,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1765170903,
-        "narHash": "sha256-O8VTGey1xxiRW+Fpb+Ps9zU7ShmxUA1a7cMTcENCVNg=",
+        "lastModified": 1766939458,
+        "narHash": "sha256-VvZeAKyB3vhyHStSO8ACKzWRKNQPmVWktjfuSVdvtUA=",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/20561be.zip"
+        "url": "https://github.com/nix-community/home-manager/archive/refs/heads/release-25.11.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/20561be.zip"
+        "url": "https://github.com/nix-community/home-manager/archive/refs/heads/release-25.11.zip"
       }
     },
     "impermanence": {
@@ -150,23 +150,23 @@
         "lastModified": 1737831083,
         "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
         "type": "tarball",
-        "url": "https://github.com/nix-community/impermanence/archive/4b3e914.zip"
+        "url": "https://github.com/nix-community/impermanence/archive/refs/heads/master.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-community/impermanence/archive/4b3e914.zip"
+        "url": "https://github.com/nix-community/impermanence/archive/refs/heads/master.zip"
       }
     },
     "import-tree": {
       "locked": {
-        "lastModified": 1763762820,
-        "narHash": "sha256-ZvYKbFib3AEwiNMLsejb/CWs/OL/srFQ8AogkebEPF0=",
+        "lastModified": 1761120675,
+        "narHash": "sha256-TEbh9zISiQcU82VwVoEbmXHnSGlUxTwvjJA9g9ErSDA=",
         "type": "tarball",
-        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
+        "url": "https://github.com/vic/import-tree/archive/refs/tags/v0.1.0.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/vic/import-tree/archive/3c23749.zip"
+        "url": "https://github.com/vic/import-tree/archive/refs/tags/v0.1.0.zip"
       }
     },
     "infuse": {
@@ -223,11 +223,11 @@
         "lastModified": 1765066094,
         "narHash": "sha256-0YSU35gfRFJzx/lTGgOt6ubP8K6LeW0vaywzNNqxkl4=",
         "type": "tarball",
-        "url": "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip"
+        "url": "https://github.com/nix-darwin/nix-darwin/archive/refs/heads/nix-darwin-25.11.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip"
+        "url": "https://github.com/nix-darwin/nix-darwin/archive/refs/heads/nix-darwin-25.11.zip"
       }
     },
     "nix-index-database": {
@@ -237,14 +237,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1765080594,
-        "narHash": "sha256-5t3d655GqLblE+p5xN5ntkeRfZBesN7vehOWcRcU88M=",
+        "lastModified": 1765267181,
+        "narHash": "sha256-d3NBA9zEtBu2JFMnTBqWj7Tmi7R5OikoU2ycrdhQEws=",
         "type": "tarball",
-        "url": "https://github.com/nix-community/nix-index-database/archive/4194c58.zip"
+        "url": "https://github.com/nix-community/nix-index-database/archive/refs/heads/main.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-community/nix-index-database/archive/4194c58.zip"
+        "url": "https://github.com/nix-community/nix-index-database/archive/refs/heads/main.zip"
       }
     },
     "nixpkgs": {
@@ -310,14 +310,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1765212031,
-        "narHash": "sha256-vOaAKjFYTrWIjGU2f5ORH8Jr5OfnzcgrF0qQb9RExaI=",
+        "lastModified": 1766849711,
+        "narHash": "sha256-gtLBwhgjERca1UCzGkFplD5epIVRiNkePHVVtyFr73g=",
         "type": "tarball",
-        "url": "https://github.com/nix-community/nixvim/archive/a9d0e06.zip"
+        "url": "https://github.com/nix-community/nixvim/archive/refs/heads/nixos-25.11.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-community/nixvim/archive/a9d0e06.zip"
+        "url": "https://github.com/nix-community/nixvim/archive/refs/heads/nixos-25.11.zip"
       }
     },
     "nuschtosSearch": {
@@ -341,18 +341,6 @@
         "owner": "NuschtOS",
         "repo": "search",
         "type": "github"
-      }
-    },
-    "process-compose-flake": {
-      "locked": {
-        "lastModified": 1764915241,
-        "narHash": "sha256-vTqn6IAkZhuuctvkxjhzI1EEybyzwaNd7HJvhF662O8=",
-        "type": "tarball",
-        "url": "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip"
       }
     },
     "pwndbg": {
@@ -442,23 +430,9 @@
           "nixpkgs"
         ],
         "nixvim": "nixvim",
-        "process-compose-flake": "process-compose-flake",
         "pwndbg": "pwndbg",
-        "services-flake": "services-flake",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix"
-      }
-    },
-    "services-flake": {
-      "locked": {
-        "lastModified": 1765168239,
-        "narHash": "sha256-NZ7H4lbbytPNwe4ZyvovycuS1BMBFwJrptgX7NiF+F0=",
-        "type": "tarball",
-        "url": "https://github.com/juspay/services-flake/archive/8b6244f.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/juspay/services-flake/archive/8b6244f.zip"
       }
     },
     "systems": {
@@ -481,11 +455,11 @@
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
         "type": "tarball",
-        "url": "https://github.com/nix-systems/default/archive/da67096.zip"
+        "url": "https://github.com/nix-systems/default/archive/refs/heads/main.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-systems/default/archive/da67096.zip"
+        "url": "https://github.com/nix-systems/default/archive/refs/heads/main.zip"
       }
     },
     "treefmt-nix": {
@@ -495,14 +469,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1762938485,
-        "narHash": "sha256-AlEObg0syDl+Spi4LsZIBrjw+snSVU4T8MOeuZJUJjM=",
+        "lastModified": 1766000401,
+        "narHash": "sha256-+cqN4PJz9y0JQXfAK5J1drd0U05D5fcAGhzhfVrDlsI=",
         "type": "tarball",
-        "url": "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip"
+        "url": "https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip"
+        "url": "https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip"
       }
     },
     "uv2nix": {
