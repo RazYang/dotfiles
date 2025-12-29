@@ -13,13 +13,19 @@ in
     modules = [
       config.flake.modules.home.base
       (
-        { pkgs, self', ... }:
+        {
+          pkgs,
+          self',
+          inputs',
+          ...
+        }:
         {
           home = {
             inherit username;
             homeDirectory = "/home/${username}";
             stateVersion = "24.05";
             packages = with pkgs; [
+              inputs'.pwndbg.packages.default
               self'.packages.nixvim
               nixfmt-rfc-style
               gdu

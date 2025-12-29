@@ -72,6 +72,10 @@
       url = "https://github.com/NixOS/flake-compat/archive/65f2313.zip";
       flake = false;
     };
+    pwndbg = {
+      url = "https://github.com/pwndbg/pwndbg/archive/refs/tags/2025.10.20.zip";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 }

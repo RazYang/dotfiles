@@ -355,6 +355,76 @@
         "url": "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip"
       }
     },
+    "pwndbg": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pyproject-build-systems": "pyproject-build-systems",
+        "pyproject-nix": "pyproject-nix",
+        "uv2nix": "uv2nix"
+      },
+      "locked": {
+        "lastModified": 1760947544,
+        "narHash": "sha256-F36ci3+upal+LYW2nK3CrkV86PU05tLIlwJrdADWISY=",
+        "type": "tarball",
+        "url": "https://github.com/pwndbg/pwndbg/archive/refs/tags/2025.10.20.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/pwndbg/pwndbg/archive/refs/tags/2025.10.20.zip"
+      }
+    },
+    "pyproject-build-systems": {
+      "inputs": {
+        "nixpkgs": [
+          "pwndbg",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "pwndbg",
+          "pyproject-nix"
+        ],
+        "uv2nix": [
+          "pwndbg",
+          "uv2nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757296493,
+        "narHash": "sha256-6nzSZl28IwH2Vx8YSmd3t6TREHpDbKlDPK+dq1LKIZQ=",
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "rev": "5b8e37fe0077db5c1df3a5ee90a651345f085d38",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "type": "github"
+      }
+    },
+    "pyproject-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "pwndbg",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757246327,
+        "narHash": "sha256-6pNlGhwOIMfhe/RLjHdpXveKS4FyLHvlGe+KtjDild4=",
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "rev": "8d77f342d66ad1601cdb9d97e9388b69f64d4c8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "detsys-nix": "detsys-nix",
@@ -373,6 +443,7 @@
         ],
         "nixvim": "nixvim",
         "process-compose-flake": "process-compose-flake",
+        "pwndbg": "pwndbg",
         "services-flake": "services-flake",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix"
@@ -432,6 +503,31 @@
       "original": {
         "type": "tarball",
         "url": "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip"
+      }
+    },
+    "uv2nix": {
+      "inputs": {
+        "nixpkgs": [
+          "pwndbg",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "pwndbg",
+          "pyproject-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756973152,
+        "narHash": "sha256-9JcKAA7T9J98LWdcxbXvmf+amQG3ZErxqQnBjEJI04I=",
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "rev": "64298e806f4a5f63a51c625edc100348138491aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "type": "github"
       }
     }
   },
