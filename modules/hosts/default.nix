@@ -57,10 +57,15 @@
       |> lib.mapAttrs (
         _: value:
         withSystem value.system (
-          { pkgs, ... }:
+          {
+            pkgs,
+            self',
+            inputs',
+            ...
+          }:
           inputs.nix-darwin.lib.darwinSystem {
             specialArgs = {
-              inherit inputs;
+              inherit inputs self' inputs';
               inherit (config.flake.modules) users;
             };
 

@@ -48,7 +48,7 @@ in
       NSAutomaticWindowAnimationsEnabled = false;
       NSStatusItemSelectionPadding = 4;
       NSStatusItemSpacing = 4;
-      "com.apple.keyboard.fnState" = false;
+      "com.apple.keyboard.fnState" = true;
     };
     controlcenter.BatteryShowPercentage = true;
     dock = {
