@@ -73,10 +73,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    flake-compat = {
-      url = "https://github.com/NixOS/flake-compat/archive/refs/heads/master.zip";
-      flake = false;
-    };
     pwndbg = {
       url = "https://github.com/pwndbg/pwndbg/archive/refs/tags/2025.10.20.zip";
       inputs.nixpkgs.follows = "nixpkgs";
