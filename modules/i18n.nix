@@ -1,10 +1,21 @@
 { ... }:
+let
+  glibcLocalesMinimal =
+    pkgs:
+    pkgs.glibcLocales.override {
+      allLocales = false;
+      locales = [
+        "en_US.UTF-8/UTF-8"
+        "zh_CN.UTF-8/UTF-8"
+      ];
+    };
+in
 {
   flake.modules.nixos.base =
-    { self', ... }:
+    { pkgs, ... }:
     {
       i18n.defaultLocale = "en_US.UTF-8";
-      i18n.glibcLocales = self'.packages.glibcLocalsMinimal;
+      i18n.glibcLocales = glibcLocalesMinimal pkgs;
       i18n.extraLocaleSettings = {
         LC_ADDRESS = "zh_CN.UTF-8";
         LC_IDENTIFICATION = "zh_CN.UTF-8";
@@ -18,9 +29,8 @@
       };
     };
   flake.modules.home.base =
-    { self', ... }:
+    { pkgs, ... }:
     {
-      i18n.glibcLocales = self'.packages.glibcLocalsMinimal;
+      i18n.glibcLocales = glibcLocalesMinimal pkgs;
     };
-
 }
