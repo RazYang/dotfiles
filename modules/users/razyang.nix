@@ -25,8 +25,8 @@ in
             homeDirectory = "/home/${username}";
             stateVersion = "24.05";
             packages = with pkgs; [
-              inputs'.pwndbg.packages.default
-              self'.packages.nixvim
+              #inputs'.pwndbg.packages.default
+              #self'.packages.nixvim
               nixfmt-rfc-style
               gdu
               nix-tree

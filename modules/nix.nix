@@ -22,6 +22,7 @@ in
           package = lib.mkDefault inputs'.detsys-nix.packages.nix;
           settings.auto-optimise-store = true;
           keepOldNixPath = false;
+          channels = lib.mkForce { };
         };
         home.packages = [ inputs'.detsys-nix.packages.nix ];
       };
@@ -31,6 +32,7 @@ in
         nix = commonNixConfig // {
           package = lib.mkForce inputs'.detsys-nix.packages.nix;
           optimise.automatic = true;
+          channel.enable = false;
         };
       };
     flake.modules.darwin.base =
