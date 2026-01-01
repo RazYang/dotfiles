@@ -10,45 +10,38 @@
     ];
     extra-substituters = [
       "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://install.determinate.systems"
       "https://nix-community.cachix.org"
-      "https://nix-darwin.cachix.org"
-      "https://cachix.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cache.determinate.systems:aHRYSxYP2rxdNsFfU5Wd0Q8d8Qqjrx4H8YB0uHK7P68="
-      "nix-darwin.cachix.org-1:LxMyKzQk7Uqkc1Pfq5uhm9GSn07xkERpy+7cpwc006A="
-      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
-      "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
     ];
   };
 
   inputs = {
     devshell = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "https://github.com/numtide/devshell/archive/refs/heads/main.zip";
+      url = "https://github.com/numtide/devshell/archive/17ed8d9.zip";
     };
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
-      url = "https://github.com/hercules-ci/flake-parts/archive/refs/heads/main.zip";
+      url = "https://github.com/hercules-ci/flake-parts/archive/2cccadc.zip";
     };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "https://github.com/nix-community/home-manager/archive/refs/heads/release-25.11.zip";
+      url = "https://github.com/nix-community/home-manager/archive/20561be.zip";
     };
-    impermanence.url = "https://github.com/nix-community/impermanence/archive/refs/heads/master.zip";
+    impermanence.url = "https://github.com/nix-community/impermanence/archive/4b3e914.zip";
     infuse = {
       flake = false;
       url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
     };
     nix-darwin = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "https://github.com/nix-darwin/nix-darwin/archive/refs/heads/nix-darwin-25.11.zip";
+      url = "https://github.com/nix-darwin/nix-darwin/archive/688427b.zip";
     };
     nix-index-database = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "https://github.com/nix-community/nix-index-database/archive/refs/heads/main.zip";
+      url = "https://github.com/nix-community/nix-index-database/archive/4194c58.zip";
     };
     nixpkgs.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
     nixpkgs-lib.follows = "nixpkgs";
@@ -58,16 +51,18 @@
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
       };
-      url = "https://github.com/nix-community/nixvim/archive/refs/heads/nixos-25.11.zip";
+      url = "https://github.com/nix-community/nixvim/archive/a9d0e06.zip";
     };
-    systems.url = "https://github.com/nix-systems/default/archive/refs/heads/main.zip";
+    process-compose-flake.url = "https://github.com/Platonic-Systems/process-compose-flake/archive/3667881.zip";
+    services-flake.url = "https://github.com/juspay/services-flake/archive/8b6244f.zip";
+    systems.url = "https://github.com/nix-systems/default/archive/da67096.zip";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "https://github.com/numtide/treefmt-nix/archive/refs/heads/main.zip";
+      url = "https://github.com/numtide/treefmt-nix/archive/5b4ee75.zip";
     };
-    import-tree.url = "https://github.com/vic/import-tree/archive/refs/tags/v0.1.0.zip";
+    import-tree.url = "https://github.com/vic/import-tree/archive/3c23749.zip";
     detsys-nix = {
-      url = "https://github.com/DeterminateSystems/nix-src/archive/refs/tags/v3.15.1.zip";
+      url = "https://github.com/DeterminateSystems/nix-src/archive/refs/tags/v3.14.0.zip";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
