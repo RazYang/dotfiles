@@ -21,11 +21,11 @@ in
             stateVersion = "24.05";
             packages = with pkgs; [
               nixfmt-rfc-style
-              vim
               gitMinimal
               gdu
               nix-tree
               stdman
+              broot
               urlencode
             ];
           };

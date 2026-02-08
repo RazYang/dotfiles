@@ -20,6 +20,7 @@ let
   );
 in
 {
+  virtualisation.docker.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   time.timeZone = "Asia/Shanghai";

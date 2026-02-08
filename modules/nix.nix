@@ -16,30 +16,30 @@ in
 {
   config = {
     flake.modules.home.base =
-      { inputs', ... }:
+      { pkgs, ... }:
       {
         nix = commonNixConfig // {
-          package = lib.mkDefault inputs'.detsys-nix.packages.nix;
+          package = lib.mkDefault pkgs.nix;
           settings.auto-optimise-store = true;
           keepOldNixPath = false;
           channels = lib.mkForce { };
         };
-        home.packages = [ inputs'.detsys-nix.packages.nix ];
+        home.packages = [ pkgs.nix ];
       };
     flake.modules.nixos.base =
-      { inputs', ... }:
+      { pkgs, ... }:
       {
         nix = commonNixConfig // {
-          package = lib.mkForce inputs'.detsys-nix.packages.nix;
+          package = lib.mkForce pkgs.nix;
           optimise.automatic = true;
           channel.enable = false;
         };
       };
     flake.modules.darwin.base =
-      { inputs', ... }:
+      { pkgs, ... }:
       {
         nix = commonNixConfig // {
-          package = lib.mkForce inputs'.detsys-nix.packages.nix;
+          package = lib.mkForce pkgs.nix;
           optimise.automatic = true;
         };
       };
