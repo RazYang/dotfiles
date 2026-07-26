@@ -1,10 +1,13 @@
 {
   pkgs,
   inputs,
+  modulesPath,
   users,
   ...
 }:
 {
+  imports = [ "${modulesPath}/profiles/perlless.nix" ];
+
   virtualisation.docker.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
