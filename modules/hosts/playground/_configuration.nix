@@ -35,11 +35,11 @@
   };
   services = {
     dae = {
-      enable = true;
+      enable = false;
       configFile = "/var/lib/config.dae";
     };
     samba = {
-      enable = true;
+      enable = false;
       settings = {
         global = {
           "passwd program" = "/run/wrappers/bin/passwd %u";
