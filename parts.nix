@@ -1,9 +1,13 @@
-{ lib, inputs, ... }:
-{
+{ lib, inputs, ... }: {
   imports = [
     (inputs.import-tree ./modules)
-    ./overlays
-    ./packages
-    ./devshells
+    inputs.devshell.flakeModule
+    inputs.flake-by-folder.flakeModule
   ];
+
+  flake-by-folder = {
+    root = ./.;
+    pkgsCross.enable = false;
+    pkgsStatic.enable = false;
+  };
 }

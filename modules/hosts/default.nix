@@ -28,10 +28,9 @@
   };
 
   config = {
-    flake.nixosConfigurations =
-      config.flake.modules.hosts
-      |> lib.filterAttrs (name: value: value.type == "nixos")
-      |> lib.mapAttrs (
+    flake.nixosConfigurations = lib.pipe config.flake.modules.hosts [
+      (lib.filterAttrs (name: value: value.type == "nixos"))
+      (lib.mapAttrs (
         _: value:
         withSystem value.system (
           {
@@ -50,11 +49,11 @@
             inherit pkgs;
           }
         )
-      );
-    flake.darwinConfigurations =
-      config.flake.modules.hosts
-      |> lib.filterAttrs (name: value: value.type == "darwin")
-      |> lib.mapAttrs (
+      ))
+    ];
+    flake.darwinConfigurations = lib.pipe config.flake.modules.hosts [
+      (lib.filterAttrs (name: value: value.type == "darwin"))
+      (lib.mapAttrs (
         _: value:
         withSystem value.system (
           {
@@ -73,6 +72,7 @@
             inherit pkgs;
           }
         )
-      );
+      ))
+    ];
   };
 }

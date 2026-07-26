@@ -1,7 +1,1 @@
-{ pkgs, self', ... }:
-{
-  devshell.packages = with pkgs; [
-    wget
-    self'.packages.hello-custom
-  ];
-}
+{ pkgs, ... }: { devshell.packages = [ pkgs.wget ]; }

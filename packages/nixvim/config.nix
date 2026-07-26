@@ -1,5 +1,7 @@
 { pkgs }: # inputs.nixvim.legacyPackages."${system}".makeNixvim
 {
+  nixpkgs.pkgs = pkgs;
+
   viAlias = true;
   vimAlias = true;
   # clipboard.providers = { xsel.enable = true; };
@@ -29,42 +31,42 @@
     }
     {
       key = "<space><space>";
-      action = ''<cmd>Telescope find_files<cr>'';
+      action = "<cmd>Telescope find_files<cr>";
       options.desc = "Telescope Find File";
     }
     {
       key = "<space>d";
-      action = ''<cmd>Telescope diagnostics<cr>'';
+      action = "<cmd>Telescope diagnostics<cr>";
       options.desc = "Telescope diagnostics";
     }
     {
       key = "<space>fg";
-      action = ''<cmd>Telescope live_grep<cr>'';
+      action = "<cmd>Telescope live_grep<cr>";
       options.desc = "Telescope File Grap";
     }
     {
       key = "<space>s";
-      action = ''<cmd>Telescope current_buffer_fuzzy_find<cr>'';
+      action = "<cmd>Telescope current_buffer_fuzzy_find<cr>";
       options.desc = "Telescope buffer Grap";
     }
     {
       key = "<space>u";
-      action = ''<cmd>Telescope undo<cr>'';
+      action = "<cmd>Telescope undo<cr>";
       options.desc = "Telescope undo";
     }
     {
       key = "<space>bb";
-      action = ''<cmd>Telescope buffers<cr>'';
+      action = "<cmd>Telescope buffers<cr>";
       options.desc = "Telescope buffer switch";
     }
     {
       key = "<space>bs";
-      action = ''<cmd>Trouble symbols toggle<cr>'';
+      action = "<cmd>Trouble symbols toggle<cr>";
       options.desc = "Trouble symbols toggle";
     }
     {
       key = "<space>ca";
-      action = ''<cmd>lua vim.lsp.buf.code_action()<CR>'';
+      action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
       options.desc = "Telescope buffer switch";
     }
     {

@@ -1,19 +1,16 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   imports = [ inputs.treefmt-nix.flakeModule ];
-  perSystem =
-    { ... }:
-    {
-      treefmt = {
-        flakeCheck = false;
-        programs = {
-          nixfmt = {
-            enable = true;
-            strict = true;
+  perSystem = { ... }: {
+    treefmt = {
+      flakeCheck = false;
+      programs = {
+        nixfmt = {
+          enable = true;
+          strict = true;
 
-          };
-          jsonfmt.enable = true;
         };
+        jsonfmt.enable = true;
       };
     };
+  };
 }

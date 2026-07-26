@@ -27,7 +27,7 @@ in
             packages = with pkgs; [
               #inputs'.pwndbg.packages.default
               #self'.packages.nixvim
-              nixfmt-rfc-style
+              nixfmt
               gdu
               nix-tree
               stdman

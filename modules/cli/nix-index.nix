@@ -1,15 +1,8 @@
-{ ... }:
-{
-  flake.modules.home.base =
-    { inputs, inputs', ... }:
-    {
-      imports = [ inputs.nix-index-database.homeModules.nix-index ];
-      programs = {
-        nix-index-database.comma.enable = true;
-        nix-index = {
-          enable = true;
-          package = inputs'.nix-index-database.packages.nix-index-with-small-db;
-        };
-      };
+{ ... }: {
+  flake.modules.home.base = { self', ... }: {
+    programs.nix-index = {
+      enable = true;
+      package = self'.packages.nix-index-with-small-db;
     };
+  };
 }

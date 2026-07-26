@@ -1,4 +1,3 @@
-{ inputs, ... }:
-{
-  systems = import inputs.systems;
+{ inputs, ... }: {
+  systems = builtins.filter (system: system != "x86_64-darwin") (import inputs.systems);
 }

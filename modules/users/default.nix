@@ -40,18 +40,14 @@
         }
       )
     );
-    flake.modules.nixos.base =
-      { inputs', self', ... }:
-      {
-        imports = [ inputs.home-manager.nixosModules.home-manager ];
-        home-manager.extraSpecialArgs = { inherit inputs inputs' self'; };
-      };
-    flake.modules.darwin.base =
-      { inputs', self', ... }:
-      {
-        imports = [ inputs.home-manager.darwinModules.home-manager ];
-        home-manager.extraSpecialArgs = { inherit inputs inputs' self'; };
-      };
+    flake.modules.nixos.base = { inputs', self', ... }: {
+      imports = [ inputs.home-manager.nixosModules.home-manager ];
+      home-manager.extraSpecialArgs = { inherit inputs inputs' self'; };
+    };
+    flake.modules.darwin.base = { inputs', self', ... }: {
+      imports = [ inputs.home-manager.darwinModules.home-manager ];
+      home-manager.extraSpecialArgs = { inherit inputs inputs' self'; };
+    };
   };
 
 }

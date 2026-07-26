@@ -12,21 +12,18 @@ in
     system = "aarch64-darwin";
     modules = [
       config.flake.modules.home.base
-      (
-        { pkgs, ... }:
-        {
-          home = {
-            inherit username;
-            homeDirectory = "/Users/${username}";
-            stateVersion = "24.05";
-            packages = with pkgs; [
-              nixfmt-rfc-style
-              gdu
-              nix-tree
-            ];
-          };
-        }
-      )
+      ({ pkgs, ... }: {
+        home = {
+          inherit username;
+          homeDirectory = "/Users/${username}";
+          stateVersion = "24.05";
+          packages = with pkgs; [
+            nixfmt
+            gdu
+            nix-tree
+          ];
+        };
+      })
     ];
   };
 }
