@@ -289,6 +289,7 @@ let
         zstd = staticZstd;
 
         nix-store = prev.nix-store.override {
+          embeddedSandboxShell = true;
           withAWS = false;
         };
       }
