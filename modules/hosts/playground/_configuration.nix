@@ -52,23 +52,6 @@
     };
     dbus.implementation = "broker";
 
-    nginx = {
-      enable = false;
-      group = "acme";
-      package = pkgs.nginxMainline;
-      clientMaxBodySize = "100m";
-      defaultHTTPListenPort = 8;
-      defaultSSLListenPort = 5;
-      virtualHosts = {
-        "ldap.razyang.com" = {
-          forceSSL = true;
-          useACMEHost = "razyang.com";
-          locations."/" = {
-            proxyPass = "http://localhost:17170";
-          };
-        };
-      };
-    };
     factorio = {
       enable = false;
       game-name = "razyang's factorio game";
@@ -97,19 +80,6 @@
   };
 
   security.wrapperDirSize = "100%";
-  security.acme = {
-    defaults = {
-      email = "xzzorz@gmail.com";
-    };
-    certs = {
-      "razyang.com" = {
-        dnsProvider = "cloudflare";
-        environmentFile = "/var/lib/secrets/razyang.com-cloudflare-api-token";
-        extraDomainNames = [ "*.razyang.com" ];
-      };
-    };
-    acceptTerms = true;
-  };
 
   networking = {
     hostName = "playground";
