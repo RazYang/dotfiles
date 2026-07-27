@@ -11,6 +11,24 @@
 let
   busybox = pkgsStatic.busybox;
   nixConfig = writeTextDir "etc/nix/nix.conf" (builtins.readFile ./nix.conf);
+  flakeRegistry = writeTextDir "etc/nix/flake-registry.json" (
+    builtins.toJSON {
+      version = 2;
+      flakes = [
+        {
+          from = {
+            type = "indirect";
+            id = "nixpkgs";
+          };
+          exact = true;
+          to = {
+            type = "tarball";
+            url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
+          };
+        }
+      ];
+    }
+  );
   runtimeClosure = closureInfo {
     rootPaths = [
       cacert
@@ -29,6 +47,7 @@ dockerTools.streamLayeredImage {
   extraCommands = ''
     mkdir -p etc/nix nix/store root tmp
     cp ${nixConfig}/etc/nix/nix.conf etc/nix/nix.conf
+    cp ${flakeRegistry}/etc/nix/flake-registry.json etc/nix/flake-registry.json
 
     while IFS= read -r storePath; do
       case "$storePath" in
