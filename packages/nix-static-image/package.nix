@@ -8,9 +8,12 @@
   ...
 }:
 let
+  bash = pkgsStatic.bash;
   busybox = pkgsStatic.busybox;
+  strip = "${pkgsStatic.stdenv.cc.bintools.bintools}/bin/${pkgsStatic.stdenv.cc.targetPrefix}strip";
 
   # Build an FHS environment containing the static Nix and BusyBox executables.
+  # Static Bash is copied into the final rootfs below.
   # The rootfs (accessible via passthru.fhsenv) is a symlink farm laid out in
   # standard FHS paths (usr/bin, usr/lib, …) whose links point into /nix/store.
   fhs = pkgs.buildFHSEnv {
@@ -38,7 +41,7 @@ dockerTools.streamLayeredImage {
   includeStorePaths = false;
 
   extraCommands = ''
-    # Store paths of the packages we actually want in the image.  buildFHSEnv
+    # Store paths whose FHS symlinks we want to dereference.  buildFHSEnv
     # also pulls in base packages (glibc, bash, coreutils, …) whose symlinks
     # we will simply discard.
     nix_path="${nix-static}"
@@ -98,6 +101,17 @@ dockerTools.streamLayeredImage {
     # need because our binaries are fully static.
     find . -type l -lname '/nix/store/*' -delete
 
+    cp -a ${bash}/bin/bash usr/bin/bash
+
+    while IFS= read -r -d "" candidate; do
+      case "$(${pkgs.file}/bin/file --brief "$candidate")" in
+        ELF\ *)
+          chmod u+w "$candidate"
+          ${strip} --strip-all "$candidate"
+          ;;
+      esac
+    done < <(find . -type f -print0)
+
     # Clean up empty directories left behind by the base packages
     find . -type d -empty -delete
 
@@ -123,7 +137,7 @@ dockerTools.streamLayeredImage {
   };
 
   meta = {
-    description = "FHS image with flattened Nix and BusyBox executables (no /nix directory)";
+    description = "FHS image with flattened Nix, Bash, and BusyBox executables (no /nix directory)";
     platforms = lib.platforms.linux;
   };
 }
