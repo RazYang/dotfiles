@@ -18,14 +18,24 @@ in
           homeDirectory = "/${username}";
           stateVersion = "24.05";
           packages = with pkgs; [
+            ast-grep
+            fd
+            jq
             nixfmt
             gitMinimal
             gdu
             nix-tree
+            ripgrep
             stdman
             broot
             urlencode
+            yq-go
           ];
+        };
+        programs.direnv = {
+          enable = true;
+          nix-direnv.enable = true;
+          silent = true;
         };
       })
     ];
