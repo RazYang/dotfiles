@@ -102,6 +102,8 @@ dockerTools.streamLayeredImage {
     find . -type l -lname '/nix/store/*' -delete
 
     cp -a ${bash}/bin/bash usr/bin/bash
+    test "$(readlink bin)" = /usr/bin
+    ln -sfn bash usr/bin/sh
 
     while IFS= read -r -d "" candidate; do
       case "$(${pkgs.file}/bin/file --brief "$candidate")" in
@@ -128,6 +130,7 @@ dockerTools.streamLayeredImage {
     Entrypoint = [ "nix" ];
     Cmd = [ "--version" ];
     Env = [
+      "ENV=/etc/bashrc"
       "HOME=/root"
       "USER=root"
       "NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt"

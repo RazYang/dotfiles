@@ -1,0 +1,9 @@
+if [ -n "${HOME:-}" ]; then
+  nix_profile_bin="$HOME/.nix-profile/bin"
+  case ":$PATH:" in
+    *":$nix_profile_bin:"*) ;;
+    *) PATH="$nix_profile_bin${PATH:+:$PATH}" ;;
+  esac
+  export PATH
+  unset nix_profile_bin
+fi
