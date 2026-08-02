@@ -7,7 +7,7 @@
       historyLimit = 5000;
       keyMode = "vi";
       prefix = "C-q";
-      terminal = "screen-256color";
+      terminal = "tmux-256color";
       plugins = with pkgs.tmuxPlugins; [ gruvbox ];
       extraConfig = ''
         unbind '"'
