@@ -3,7 +3,6 @@
     programs = {
       starship = {
         enable = true;
-        enableZshIntegration = false;
       };
 
       zoxide.enable = true;
@@ -47,16 +46,6 @@
         syntaxHighlighting.enable = true;
         defaultKeymap = "emacs";
         plugins = [
-          {
-            name = "powerlevel10k";
-            file = "powerlevel10k.zsh-theme";
-            src = pkgs.fetchFromGitHub {
-              owner = "romkatv";
-              repo = "powerlevel10k";
-              rev = "v1.20.0";
-              sha256 = "sha256-ES5vJXHjAKw/VHjWs8Au/3R+/aotSbY7PWnWAMzCR8E=";
-            };
-          }
           {
             name = "fzf-tab";
             file = "fzf-tab.plugin.zsh";

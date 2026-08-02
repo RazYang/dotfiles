@@ -37,46 +37,8 @@
 
   };
   services = {
-    dae = {
-      enable = false;
-      configFile = "/var/lib/config.dae";
-    };
-    samba = {
-      enable = false;
-      settings = {
-        global = {
-          "passwd program" = "/run/wrappers/bin/passwd %u";
-          security = "user";
-        };
-      };
-    };
     dbus.implementation = "broker";
-
-    factorio = {
-      enable = false;
-      game-name = "razyang's factorio game";
-      admins = [ "razyang" ];
-      allowedPlayers = [
-        "razyang"
-        "SEMOKA"
-        "Toto_xx"
-      ];
-    };
-    lldap = {
-      enable = false;
-      settings = {
-        ldap_base_dn = "dc=razyang,dc=com";
-        ldap_user_dn = "razyang";
-      };
-    };
-    bitmagnet.enable = false;
-
-    postgresql = {
-      enable = false;
-      enableJIT = true;
-      enableTCPIP = true;
-      #package = pkgs.postgresql_17_jit;
-    };
+    k3s.enable = false;
   };
 
   security.wrapperDirSize = "100%";
