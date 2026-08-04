@@ -55,6 +55,9 @@
       url = "github:numtide/treefmt-nix";
     };
     import-tree.url = "github:denful/import-tree";
+    nix2container.url = "github:nlewo/nix2container";
+    nix2container.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
 }
